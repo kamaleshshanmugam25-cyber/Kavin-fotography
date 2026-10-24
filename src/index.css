@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-display: "Cinzel", "Cormorant Garamond", serif;
+
+  --color-crimson: #C8102E;
+  --color-gold: #D4AF77;
+  --color-gold-light: #E8D4B4;
+  --color-gold-hover: #C59F65;
+  --color-ivory: #FFFDF7;
+  --color-beige: #F3E9DC;
+  --color-burgundy: #4A0715;
+  --color-burgundy-dark: #2A040C;
+  --color-burgundy-light: #630C1E;
+  --color-pure-white: #FFFFFF;
+
+  --color-brand-blue: #C8102E;
+  --color-brand-blue-hover: #A00B23;
+  --color-brand-blue-light: #D4AF77;
+  --color-brand-blue-glow: rgba(200, 16, 46, 0.25);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark light;
+    overflow-x: hidden !important;
+    max-width: 100vw;
+    width: 100%;
+  }
+
+  body {
+    background-color: #2A040C;
+    color: #1A1A1A;
+    font-family: var(--font-sans);
+    overflow-x: hidden !important;
+    max-width: 100vw;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+
+  #root {
+    overflow-x: hidden !important;
+    max-width: 100vw;
+    width: 100%;
+  }
+
+  ::selection {
+    background-color: #C8102E;
+    color: #FFFDF7;
+  }
+
+  /* Universal Transparent Scrollbar - Never causes a white side stripe */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 119, 0.35);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 175, 119, 0.7);
+  }
+
+  /* Hide scrollbar completely on mobile/touch screens */
+  @media (max-width: 1024px) {
+    ::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+    * {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+    }
+  }
+}
+
+/* Glassmorphism & luxury helpers */
+.glass-panel-burgundy {
+  background: rgba(74, 7, 21, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 119, 0.25);
+}
+
+.glass-nav-scrolled {
+  background: rgba(255, 253, 247, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(212, 175, 119, 0.2);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #F3E9DC 0%, #D4AF77 50%, #C59F65 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-burgundy {
+  background: linear-gradient(135deg, #4A0715 0%, #C8102E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hide floating navbar when Story or Film Modal is open */
+body.story-modal-open header,
+body.film-modal-open header {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  transform: translateY(-20px) !important;
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
