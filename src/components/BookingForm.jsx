@@ -135,8 +135,8 @@ export default function BookingForm({ preselectedService }) {
       <div id="contact" className="absolute -top-20 left-0" />
 
       {/* Background Subtle Warm Beige Ambient Glow */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#D4AF77]/10 blur-[140px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#F3E9DC]/60 blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-[radial-gradient(circle,_rgba(212,175,119,0.12),_transparent_70%)] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[radial-gradient(circle,_rgba(243,233,220,0.4),_transparent_70%)] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header with Smooth Reveal */}

@@ -28,8 +28,8 @@ export function smoothScrollTo(target, offset = 76) {
       window.__lenis.start();
       window.__lenis.scrollTo(element, {
         offset: -offset,
-        duration: 0.85,
-        lock: true,
+        duration: 0.65,
+        lock: false,
         force: true,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       });

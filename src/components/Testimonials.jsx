@@ -68,7 +68,7 @@ export default function Testimonials() {
             className="max-w-3xl mx-auto p-8 sm:p-12 rounded-3xl bg-[#F3E9DC]/70 border border-[#D4AF77]/35 text-center shadow-xl relative overflow-hidden"
           >
             {/* Subtle Champagne Gold Ambient Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#D4AF77]/15 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[radial-gradient(circle,_rgba(212,175,119,0.15),_transparent_70%)] rounded-full pointer-events-none" />
 
             <div className="relative z-10 flex flex-col items-center">
               <motion.div

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, ChevronRight, Sparkles, Images, Calendar, ArrowRight } from 'lucide-react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { Menu, X, ChevronDown, ChevronRight, Sparkles, Images, Calendar, ArrowRight, Camera } from 'lucide-react';
 import { STUDIO_INFO } from '../data/studioInfo';
 import { smoothScrollTo } from '../utils/scroll';
 
@@ -18,7 +18,6 @@ export const OUTDOOR_MENU = [
   { id: 'candid-photography', title: 'Candid Photography', subtitle: 'Unscripted Emotional Joy' },
   { id: 'maternity-photoshoots', title: 'Maternity Photoshoots', subtitle: 'Artistic Motherhood Glow' },
   { id: 'baby-shower-photography', title: 'Baby Shower (Valaikappu)', subtitle: 'Traditional Bangle Rituals' },
-  { id: 'wedding-videography', title: 'Cinematic Films & Teasers', subtitle: '4K Ultra HD Cinema Reels' },
 ];
 
 export default function Navbar({ onBookClick }) {
@@ -97,14 +96,7 @@ export default function Navbar({ onBookClick }) {
     setMobileMenuOpen(false);
     setDesktopDropdown(null);
     document.body.style.overflow = '';
-
-    if (onBookClick) {
-      onBookClick();
-    } else {
-      requestAnimationFrame(() => {
-        handleNavClick('#booking');
-      });
-    }
+    navigate('/booking');
   };
 
   const handleMouseEnter = (menuKey) => {
@@ -125,7 +117,7 @@ export default function Navbar({ onBookClick }) {
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-2.5 sm:top-5 inset-x-0 mx-auto w-[92%] sm:w-[94%] max-w-5xl xl:max-w-6xl z-[85] pointer-events-auto"
+        className="fixed top-2.5 sm:top-5 inset-x-0 mx-auto w-[92%] sm:w-[94%] max-w-5xl xl:max-w-6xl z-[85] pointer-events-auto transform-gpu will-change-transform"
       >
         <div className="bg-[#E7E2D8]/95 backdrop-blur-md border border-[#D4AF77]/40 rounded-full px-3 sm:px-5 py-1.5 sm:py-2.5 shadow-xl shadow-black/15 flex items-center justify-between gap-2 sm:gap-3 text-gray-900 transition-all duration-300">
           {/* Brand Logo & Studio Name (Left) */}
@@ -169,17 +161,15 @@ export default function Navbar({ onBookClick }) {
               Home
             </a>
 
-            {/* About */}
-            <a
-              href="#about"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#about');
-              }}
-              className="px-3 py-1.5 rounded-full hover:bg-black/5 hover:text-black transition-all whitespace-nowrap cursor-pointer"
+            {/* About Page Link */}
+            <Link
+              to="/about"
+              className={`px-3 py-1.5 rounded-full hover:bg-black/5 hover:text-black transition-all whitespace-nowrap cursor-pointer ${
+                location.pathname === '/about' ? 'bg-black/10 text-black font-semibold' : ''
+              }`}
             >
               About
-            </a>
+            </Link>
 
             {/* Weddings Dropdown */}
             <div
@@ -299,29 +289,15 @@ export default function Navbar({ onBookClick }) {
               </AnimatePresence>
             </div>
 
-            {/* Films Link */}
-            <a
-              href="#films"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#films');
-              }}
-              className="px-3 py-1.5 rounded-full hover:bg-black/5 hover:text-black transition-all whitespace-nowrap cursor-pointer"
-            >
-              Films
-            </a>
-
-            {/* Contact Link */}
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#contact');
-              }}
-              className="px-3 py-1.5 rounded-full hover:bg-black/5 hover:text-black transition-all whitespace-nowrap cursor-pointer"
+            {/* Contact Page Link */}
+            <Link
+              to="/contact"
+              className={`px-3 py-1.5 rounded-full hover:bg-black/5 hover:text-black transition-all whitespace-nowrap cursor-pointer ${
+                location.pathname === '/contact' ? 'bg-black/10 text-black font-semibold' : ''
+              }`}
             >
               Contact
-            </a>
+            </Link>
           </nav>
 
           {/* Right Section: Compact on mobile, spacious on desktop */}
@@ -330,17 +306,16 @@ export default function Navbar({ onBookClick }) {
             <button
               type="button"
               onClick={handleBookingCTA}
-              className="bg-white hover:bg-white/90 text-gray-900 font-semibold text-xs sm:text-[13px] px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-sm hover:shadow-md flex items-center gap-1.5 sm:gap-2.5 border border-black/5 hover:border-[#D4AF77]/40 transition-all duration-200 cursor-pointer group shrink-0 active:scale-[0.98]"
+              className={`text-gray-900 font-semibold text-xs sm:text-[13px] px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-sm hover:shadow-md flex items-center gap-1.5 sm:gap-2.5 border transition-all duration-200 cursor-pointer group shrink-0 active:scale-[0.98] ${
+                location.pathname === '/booking'
+                  ? 'bg-[#F3E9DC] border-[#D4AF77] ring-2 ring-[#D4AF77]/50 text-black font-bold'
+                  : 'bg-white hover:bg-white/90 border-black/5 hover:border-[#D4AF77]/40'
+              }`}
               title="Book your wedding or celebration with Kanvi Fotography"
             >
-              {/* Circular Avatar / Brand Icon with Active Green Online Indicator */}
-              <div className="relative w-5 h-5 sm:w-7 sm:h-7 rounded-full overflow-hidden shrink-0 ring-1 ring-[#D4AF77]/50 bg-[#2A040C] flex items-center justify-center p-0.5">
-                <img
-                  src={STUDIO_INFO.assets.logoMark}
-                  alt="Kanvi Fotography Booking Desk"
-                  className="w-full h-full object-contain"
-                />
-                <span className="absolute top-0 right-0 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-emerald-500 rounded-full ring-1.5 ring-white" />
+              {/* Fine-Art Camera Badge */}
+              <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br from-[#F3E9DC] via-[#D4AF77] to-[#B3874B] border border-[#D4AF77]/60 flex items-center justify-center shadow-sm shrink-0 group-hover:scale-110 transition-transform">
+                <Camera className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#2A040C]" />
               </div>
               <span className="hidden sm:inline whitespace-nowrap">Book Your Event</span>
               <span className="sm:hidden text-[11px] font-bold whitespace-nowrap">Book</span>
@@ -403,11 +378,17 @@ export default function Navbar({ onBookClick }) {
                   <ArrowRight className="w-4 h-4 text-[#7A5826]" />
                 </button>
 
-                {/* About */}
+                {/* About Page Link */}
                 <button
                   type="button"
-                  onClick={() => handleNavClick('#about')}
-                  className="text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    document.body.style.overflow = '';
+                    navigate('/about');
+                  }}
+                  className={`text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900 ${
+                    location.pathname === '/about' ? 'bg-[#D4AF77]/30 font-bold text-[#4A0715]' : ''
+                  }`}
                 >
                   <span>About Founder &amp; Vision</span>
                   <ArrowRight className="w-4 h-4 text-[#7A5826]" />
@@ -497,16 +478,6 @@ export default function Navbar({ onBookClick }) {
                   )}
                 </div>
 
-                {/* Films */}
-                <button
-                  type="button"
-                  onClick={() => handleNavClick('#films')}
-                  className="text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900"
-                >
-                  <span>Cinematic Films</span>
-                  <ArrowRight className="w-4 h-4 text-[#7A5826]" />
-                </button>
-
                 {/* Process */}
                 <button
                   type="button"
@@ -527,11 +498,36 @@ export default function Navbar({ onBookClick }) {
                   <ArrowRight className="w-4 h-4 text-[#7A5826]" />
                 </button>
 
-                {/* Contact */}
+                {/* Book Now Dedicated Link */}
                 <button
                   type="button"
-                  onClick={() => handleNavClick('#contact')}
-                  className="text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    document.body.style.overflow = '';
+                    navigate('/booking');
+                  }}
+                  className={`text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900 ${
+                    location.pathname === '/booking' ? 'bg-[#D4AF77]/30 font-bold text-[#4A0715]' : ''
+                  }`}
+                >
+                  <span className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-[#C8102E]" />
+                    <span>Reserve Date (Book Now)</span>
+                  </span>
+                  <ArrowRight className="w-4 h-4 text-[#7A5826]" />
+                </button>
+
+                {/* Contact Page Link */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    document.body.style.overflow = '';
+                    navigate('/contact');
+                  }}
+                  className={`text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900 ${
+                    location.pathname === '/contact' ? 'bg-[#D4AF77]/30 font-bold text-[#4A0715]' : ''
+                  }`}
                 >
                   <span>Contact &amp; Studio</span>
                   <ArrowRight className="w-4 h-4 text-[#7A5826]" />
@@ -542,9 +538,11 @@ export default function Navbar({ onBookClick }) {
               <div className="pt-4 pb-1 border-t border-[#D4AF77]/30 mt-4 space-y-3">
                 <button
                   onClick={handleBookingCTA}
-                  className="w-full py-3 rounded-full bg-white text-gray-900 font-bold text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer border border-[#D4AF77]/40 active:scale-[0.99]"
+                  className="w-full py-3 rounded-full bg-white text-gray-900 font-bold text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer border border-[#D4AF77]/40 active:scale-[0.99] group"
                 >
-                  <Calendar className="w-4 h-4 text-[#C8102E]" />
+                  <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#F3E9DC] via-[#D4AF77] to-[#B3874B] border border-[#D4AF77]/60 flex items-center justify-center shadow-sm shrink-0">
+                    <Camera className="w-3 h-3 text-[#2A040C]" />
+                  </div>
                   <span>BOOK YOUR EVENT</span>
                 </button>
                 <div className="flex justify-between items-center text-xs px-2 text-gray-600">

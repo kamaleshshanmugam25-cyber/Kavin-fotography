@@ -6,13 +6,15 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
 import WeddingStories from './components/WeddingStories';
-import Films from './components/Films';
 import Process from './components/Process';
 import Testimonials from './components/Testimonials';
 import InstagramGallery from './components/InstagramGallery';
 import BookingForm from './components/BookingForm';
 import BookingModal from './components/BookingModal';
 import ServiceDetailPage from './pages/ServiceDetailPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import BookingPage from './pages/BookingPage';
 import ScrollToTop from './components/ScrollToTop';
 import SplashScreen from './components/SplashScreen';
 import Footer from './components/Footer';
@@ -35,19 +37,16 @@ function HomePage({ onBookClick, onExploreClick }) {
       {/* 4. Featured Wedding Stories */}
       <WeddingStories />
 
-      {/* 5. Cinematic Films & Event Experiences */}
-      <Films onEnquireFilm={onBookClick} />
-
-      {/* 6. 4-Step Photography Process */}
+      {/* 5. 4-Step Photography Process */}
       <Process />
 
-      {/* 8. Testimonials & Client Perspectives */}
+      {/* 6. Testimonials & Client Perspectives */}
       <Testimonials />
 
-      {/* 9. Social Media & Instagram Grid */}
+      {/* 7. Social Media & Instagram Grid */}
       <InstagramGallery />
 
-      {/* 10. Booking Enquiry Form & Direct Contacts */}
+      {/* 8. Booking Enquiry Form & Direct Contacts */}
       <BookingForm />
     </main>
   );
@@ -61,14 +60,15 @@ export default function App() {
   // Initialize Apple-grade momentum smooth scroll with Lenis
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Apple-like exponential ease-out
+      duration: 0.8,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Responsive Apple-like exponential ease-out
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.0,
+      wheelMultiplier: 1.1,
       touchMultiplier: 1.0,
       infinite: false,
+      syncTouch: true,
     });
 
     window.__lenis = lenis;
@@ -116,7 +116,7 @@ export default function App() {
     <Router>
       <ScrollToTop />
       {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
-      <div className="min-h-screen bg-[#2A040C] text-[#1A1A1A] selection:bg-[#C8102E] selection:text-white relative overflow-x-hidden w-full max-w-full">
+      <div className="min-h-screen bg-[#2A040C] text-[#1A1A1A] selection:bg-[#C8102E] selection:text-white relative overflow-x-clip w-full max-w-full">
         {/* Navigation Bar */}
         <Navbar onBookClick={() => handleOpenBookingModal()} />
 
@@ -131,6 +131,27 @@ export default function App() {
               />
             }
           />
+          <Route
+            path="/about"
+            element={
+              <AboutPage
+                onBookClick={(service) => handleOpenBookingModal(service)}
+              />
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <ContactPage />
+            }
+          />
+          <Route
+            path="/booking"
+            element={
+              <BookingPage />
+            }
+          />
+          <Route path="/book" element={<Navigate to="/booking" replace />} />
           <Route
             path="/services/:serviceId"
             element={

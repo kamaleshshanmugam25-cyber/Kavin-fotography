@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Compass, ArrowUp, MessageSquare } from 'lucide-react';
 import { STUDIO_INFO } from '../data/studioInfo';
 import { smoothScrollTo } from '../utils/scroll';
@@ -40,8 +40,8 @@ export default function Footer({ onBookClick }) {
       className="relative bg-[#4A0715] text-[#FFFDF7]/90 overflow-hidden border-t border-[#D4AF77]/25"
     >
       {/* Subtle brand depth glow with champagne gold and warm burgundy tones */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#D4AF77]/10 blur-[150px] pointer-events-none rounded-full" />
-      <div className="absolute top-0 right-1/4 w-[500px] h-[250px] bg-[#C8102E]/15 blur-[130px] pointer-events-none rounded-full" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[radial-gradient(ellipse_at_center,_rgba(212,175,119,0.12),_transparent_70%)] pointer-events-none rounded-full" />
+      <div className="absolute top-0 right-1/4 w-[500px] h-[250px] bg-[radial-gradient(ellipse_at_center,_rgba(200,16,46,0.15),_transparent_70%)] pointer-events-none rounded-full" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-[#D4AF77]/20">
@@ -99,13 +99,7 @@ export default function Footer({ onBookClick }) {
                 </button>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => handleNavClick('#about')}
-                  className="text-[#FFFDF7]/85 hover:text-[#D4AF77] transition-colors cursor-pointer"
-                >
-                  About Founder &amp; Vision
-                </button>
+                <Link to="/about" className="text-[#FFFDF7]/85 hover:text-[#D4AF77] transition-colors cursor-pointer">About Founder &amp; Vision</Link>
               </li>
               <li>
                 <button
@@ -117,25 +111,12 @@ export default function Footer({ onBookClick }) {
                 </button>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => handleNavClick('#films')}
-                  className="text-[#FFFDF7]/85 hover:text-[#D4AF77] transition-colors cursor-pointer"
-                >
-                  Cinematic Films &amp; Aerials
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (onBookClick) onBookClick();
-                    else handleNavClick('#booking');
-                  }}
+                <Link
+                  to="/booking"
                   className="text-[#D4AF77] font-semibold underline underline-offset-4 hover:text-[#FFFDF7] transition-colors cursor-pointer"
                 >
-                  Book Your Event
-                </button>
+                  Book Your Event (Reserve Date)
+                </Link>
               </li>
             </ul>
           </div>

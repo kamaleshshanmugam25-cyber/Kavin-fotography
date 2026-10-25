@@ -67,13 +67,13 @@ export default function InstagramGallery() {
               <img
                 src={post.image}
                 alt={`Kanvi Fotography Instagram Post - ${post.caption}`}
-                className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out filter brightness-[0.95]"
+                className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out "
                 loading="lazy"
               />
 
               {/* Top-Right Real Instagram Badge (Reels Camera or Multi-Photo Carousel) */}
               <div className="absolute top-3.5 right-3.5 z-20 pointer-events-none">
-                <div className="p-1.5 rounded-md bg-black/40 backdrop-blur-md border border-white/20 text-white shadow-lg">
+                <div className="p-1.5 rounded-md bg-black/75 border border-white/20 text-white shadow-lg">
                   {post.badgeType === 'reel' ? (
                     // Instagram Reel / Video Icon
                     <svg className="w-4 h-4 text-white drop-shadow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -93,7 +93,7 @@ export default function InstagramGallery() {
               {/* Title Badges / Text Overlays (Inspired by reference screenshot) */}
               {post.titleBadge && (
                 <div className="absolute top-4 left-4 z-20 pointer-events-none">
-                  <div className="px-3 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-serif tracking-wider shadow-xl">
+                  <div className="px-3 py-1 rounded-lg bg-black/85 border border-white/20 text-white text-[11px] font-serif tracking-wider shadow-xl">
                     {post.titleBadge}
                   </div>
                 </div>
@@ -113,7 +113,7 @@ export default function InstagramGallery() {
                     </span>
                   </div>
 
-                  <span className="p-1.5 rounded-full bg-white/20 backdrop-blur-sm text-white group-hover:bg-[#D4AF77] group-hover:text-[#2A040C] transition-colors">
+                  <span className="p-1.5 rounded-full bg-white/20  text-white group-hover:bg-[#D4AF77] group-hover:text-[#2A040C] transition-colors">
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </span>
                 </div>

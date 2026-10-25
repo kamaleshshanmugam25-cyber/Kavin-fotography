@@ -10,7 +10,7 @@ export default function WeddingStories() {
   return (
     <section id="wedding-stories" className="relative py-28 sm:py-36 bg-[#4A0715] border-t border-[#D4AF77]/30 text-white overflow-hidden">
       {/* Subtle Champagne Gold Ambient Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#D4AF77]/10 blur-[150px] pointer-events-none rounded-full" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[radial-gradient(ellipse_at_center,_rgba(212,175,119,0.14),_transparent_70%)] pointer-events-none rounded-full" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
@@ -46,7 +46,7 @@ export default function WeddingStories() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center rounded-3xl bg-[#2A040C]/90 border border-[#D4AF77]/30 p-6 sm:p-8 lg:p-10 hover:border-[#D4AF77]/60 transition-colors shadow-2xl backdrop-blur-md"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center rounded-3xl bg-[#2A040C] border border-[#D4AF77]/30 p-6 sm:p-8 lg:p-10 hover:border-[#D4AF77]/60 transition-colors shadow-2xl"
               >
                 {/* Visual Image Preview with Subtle Horizontal Slide and Reveal */}
                 <motion.div
@@ -59,19 +59,16 @@ export default function WeddingStories() {
                   }`}
                   onClick={() => setSelectedStory(story)}
                 >
-                  <motion.img
-                    initial={{ scale: 1.08 }}
-                    whileInView={{ scale: 1.0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                  <img
                     src={story.heroImage}
                     alt={story.title}
-                    className="w-full h-full object-cover object-center group-hover:scale-106 transition-transform duration-700 filter brightness-[0.88]"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
                     loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#2A040C] via-transparent to-black/40" />
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-[#D4AF77]/40 text-[10px] font-semibold tracking-wider uppercase text-[#D4AF77]">
+                    <span className="px-3 py-1 rounded-full bg-black/85 border border-[#D4AF77]/40 text-[10px] font-semibold tracking-wider uppercase text-[#D4AF77]">
                       {story.category}
                     </span>
                   </div>

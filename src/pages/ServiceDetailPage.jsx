@@ -65,9 +65,7 @@ export default function ServiceDetailPage({ onBookService }) {
   };
 
   const handleBookClick = () => {
-    if (onBookService) {
-      onBookService(currentService.title);
-    }
+    navigate('/booking', { state: { service: currentService.title } });
   };
 
   const handleWhatsAppChat = () => {

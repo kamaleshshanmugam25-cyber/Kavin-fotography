@@ -7,8 +7,8 @@ export default function About() {
   return (
     <section id="about" className="relative py-28 sm:py-36 bg-[#FFFDF7] overflow-hidden border-t border-[#D4AF77]/20">
       {/* Subtle Champagne Gold & Warm Beige Ambient Vignette */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#D4AF77]/10 blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-[#F3E9DC]/60 blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-[radial-gradient(circle,_rgba(212,175,119,0.12),_transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-[radial-gradient(circle,_rgba(243,233,220,0.4),_transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -45,12 +45,12 @@ export default function About() {
                 fine art photography and cinematic visual storytelling.
               </p>
               <p>
-                From intimate family rituals and monumental Indian weddings to candid portraits and high-production event films,
+                From intimate family rituals and monumental Indian weddings to candid portraits and cherished family milestones,
                 Founder Bala approaches every occasion with heartfelt care, artistic vision, and exacting technical precision.
               </p>
               <p>
                 Based in <strong className="text-gray-900 font-semibold">{STUDIO_INFO.location.address}</strong>, we
-                serve clients across India, crafting timeless photographs and cinema reels that families and businesses treasure for generations.
+                serve clients across India, crafting timeless photographs and cherished visual memories that families and businesses treasure for generations.
               </p>
             </div>
 
@@ -111,15 +111,12 @@ export default function About() {
             <div className="relative mx-auto max-w-md lg:max-w-none">
               {/* Primary Featured Photograph with Subtle Image Reveal */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#D4AF77]/30 group">
-                <motion.img
-                  initial={{ scale: 1.08 }}
-                  whileInView={{ scale: 1.0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                <img
                   src="/assets/web/wedding-gopuram-courtyard.jpg"
                   alt="Fine Art Traditional South Indian Wedding Portrait by Kanvi Fotography in Trichy"
                   className="w-full h-[450px] sm:h-[540px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#4A0715]/85 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">

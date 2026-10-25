@@ -19,19 +19,26 @@ export default function SplashScreen({ onComplete }) {
       });
     }, 50);
 
-    // Complete splash screen after branding presentation
+    // Trigger curtain lift animation
     const timer = setTimeout(() => {
       setShow(false);
     }, 1100);
 
+    // Safety fallback so splash screen never blocks page under any circumstance
+    const safetyTimer = setTimeout(() => {
+      if (onComplete) onComplete();
+    }, 2100);
+
     return () => {
       clearInterval(interval);
       clearTimeout(timer);
+      clearTimeout(safetyTimer);
     };
-  }, []);
+  }, [onComplete]);
 
   const handleSkip = () => {
     setShow(false);
+    if (onComplete) onComplete();
   };
 
   return (
@@ -45,7 +52,7 @@ export default function SplashScreen({ onComplete }) {
             y: '-100%',
             transition: { duration: 0.85, ease: [0.76, 0, 0.24, 1] },
           }}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#1F0308] text-white overflow-hidden select-none"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#1F0308] text-white overflow-hidden select-none pointer-events-auto"
         >
           {/* Subtle Ambient Vignettes */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#4A0715]/70 rounded-full blur-[140px] pointer-events-none" />
@@ -55,7 +62,7 @@ export default function SplashScreen({ onComplete }) {
           <button
             type="button"
             onClick={handleSkip}
-            className="absolute top-6 right-6 text-[11px] tracking-[0.2em] uppercase font-semibold text-[#D4AF77]/70 hover:text-[#FFFDF7] transition-colors px-3 py-1.5 rounded-full border border-[#D4AF77]/20 hover:border-[#D4AF77]/50 cursor-pointer"
+            className="absolute top-6 right-6 text-[11px] tracking-[0.2em] uppercase font-semibold text-[#D4AF77]/70 hover:text-[#FFFDF7] transition-colors px-3 py-1.5 rounded-full border border-[#D4AF77]/20 hover:border-[#D4AF77]/50 cursor-pointer z-50"
           >
             Skip
           </button>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { Sparkles, Calendar, ArrowRight } from 'lucide-react';
 import { STUDIO_INFO } from '../data/studioInfo';
 import { smoothScrollTo } from '../utils/scroll';
@@ -24,13 +25,13 @@ const HERO_SLIDES = [
     objectPosition: 'center 30%',
   },
   {
-    image: './assets/BALA0744.jpg',
+    image: '/assets/web/film-wedding-bala0744.jpg',
     alt: 'Golden hour bridal portrait with veil and sunlight by Kanvi Fotography',
     tag: 'Golden Hour Elegance',
     objectPosition: 'center 15%',
   },
   {
-    image: './assets/CV011193.jpg',
+    image: '/assets/web/hilltop-romance-cv011193.jpg',
     alt: 'Couple walking hand in hand on a scenic hilltop by Kanvi Fotography',
     tag: 'Scenic Hilltop Romance',
     objectPosition: 'center 20%',
@@ -38,6 +39,7 @@ const HERO_SLIDES = [
 ];
 
 export default function Hero({ onExploreClick, onBookClick }) {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Auto-advance hero slides every 5 seconds for a relaxed, cinematic experience
@@ -57,11 +59,7 @@ export default function Hero({ onExploreClick, onBookClick }) {
   };
 
   const scrollToBooking = () => {
-    if (onBookClick) {
-      onBookClick();
-    } else {
-      smoothScrollTo('#booking', 76);
-    }
+    navigate('/booking');
   };
 
   return (
@@ -94,7 +92,7 @@ export default function Hero({ onExploreClick, onBookClick }) {
         <div className="absolute inset-0 bg-gradient-to-t from-[#2A040C]/95 via-black/35 to-transparent sm:to-[#2A040C]/50" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none" />
         {/* Subtle Ambient Vignette */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[650px] h-[250px] sm:h-[450px] bg-[#D4AF77]/10 blur-[100px] sm:blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[650px] h-[250px] sm:h-[450px] bg-[radial-gradient(ellipse_at_center,_rgba(212,175,119,0.15),_transparent_70%)] rounded-full pointer-events-none" />
       </div>
 
       {/* Slide Navigation Dots */}

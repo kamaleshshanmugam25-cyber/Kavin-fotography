@@ -196,26 +196,5 @@ export const SERVICES = [
       '/assets/web/wedding-pillar-rest.jpg',
       '/assets/web/bridal-makeup-macro.jpg',
     ],
-  },
-  {
-    id: 'wedding-videography',
-    title: 'Cinematic Films & Teasers',
-    tag: 'Cinematic Motion',
-    category: 'Films',
-    subcategory: 'Films',
-    description:
-      'Cinematic wedding films crafted like high-budget cinema, blending slow-motion rituals, original audio vows, and dynamic highlight reels.',
-    image: '/assets/web/reception-sparkler-tunnel.jpg',
-    heroImage: '/assets/web/reception-sparkler-tunnel.jpg',
-    objectPosition: 'center 20%',
-    alt: 'Cinematic wedding videography and film production by Kanvi Fotography',
-    features: ['4K Ultra HD Teasers', 'Feature-Length Wedding Film', 'Pro Audio Recording'],
-    gallery: [
-      '/assets/web/reception-sparkler-tunnel.jpg',
-      '/assets/web/hero-grand-ballroom.jpg',
-      '/assets/web/wedding-metti-ritual.jpg',
-      '/assets/web/prewedding-beach-surf-lift.jpg',
-      '/assets/web/reception-moon-lanterns.jpg',
-    ],
-  },
+  }
 ];

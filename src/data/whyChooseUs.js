@@ -34,9 +34,9 @@ export const WHY_CHOOSE_US = [
   },
   {
     id: 'comprehensive',
-    title: 'Comprehensive Photo & Film Options',
+    title: 'Comprehensive Photography Options',
     description:
-      'A complete one-stop creative suite—from candid and traditional photography to 4K cinematic films, aerial drone coverage, LED walls, and interactive booths.',
+      'A complete one-stop photography suite—from candid and traditional wedding coverage to pre-wedding shoots, maternity portraits, and heirloom albums.',
     icon: 'Layers',
   },
   {

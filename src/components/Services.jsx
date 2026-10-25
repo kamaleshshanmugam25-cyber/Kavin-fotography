@@ -16,11 +16,7 @@ export default function Services({ onSelectService }) {
   const navigate = useNavigate();
 
   const handleEnquire = (service) => {
-    if (onSelectService) {
-      onSelectService(service.title);
-    } else {
-      smoothScrollTo('#booking', 84);
-    }
+    navigate('/booking', { state: { service: service.title } });
   };
 
   const handleViewPhotos = (service) => {
@@ -79,17 +75,18 @@ export default function Services({ onSelectService }) {
                     src={service.image}
                     alt={service.alt}
                     style={{ objectPosition: service.objectPosition || 'center 20%' }}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-[0.9]"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
 
                   {/* Tag Badge: Bridal Beauty | The Wedding | Glamour & Lights */}
-                  <div className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[10px] font-semibold tracking-wider uppercase text-white">
+                  <div className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/80 border border-white/20 text-[10px] font-semibold tracking-wider uppercase text-white shadow-md">
                     {service.tag}
                   </div>
 
-                  <div className="absolute top-3.5 right-3.5 px-2.5 py-1 rounded-md bg-[#4A0715] backdrop-blur-md text-[10px] font-medium tracking-wider uppercase text-[#F3E9DC] border border-[#D4AF77]/30 shadow-md">
+                  <div className="absolute top-3.5 right-3.5 px-2.5 py-1 rounded-md bg-[#4A0715] text-[10px] font-medium tracking-wider uppercase text-[#F3E9DC] border border-[#D4AF77]/30 shadow-md">
                     {service.category}
                   </div>
 

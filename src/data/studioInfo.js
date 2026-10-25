@@ -46,8 +46,8 @@ export const STUDIO_INFO = {
     },
     youtube: {
       url: 'https://youtube.com',
-      handle: 'Kanvi Fotography Films',
-      label: 'YouTube Films',
+      handle: 'Kanvi Fotography',
+      label: 'YouTube',
       isPlaceholder: true,
     },
   },
