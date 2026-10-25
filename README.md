@@ -176,3 +176,5 @@ All studio contact information, phone numbers, email addresses, and social handl
 `src/data/studioInfo.js`
 
 To update the WhatsApp number or email across the entire website, simply edit that single file.
+#   k a v i n _ f o t o g r a p h y  
+ 
