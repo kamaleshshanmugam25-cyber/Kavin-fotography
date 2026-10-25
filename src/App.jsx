@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Lenis from 'lenis';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -56,6 +57,46 @@ export default function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalService, setModalService] = useState('');
+
+  // Initialize Apple-grade momentum smooth scroll with Lenis
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Apple-like exponential ease-out
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.0,
+      infinite: false,
+    });
+
+    window.__lenis = lenis;
+
+    let rafId;
+    function raf(time) {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    }
+    rafId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+      window.__lenis = null;
+    };
+  }, []);
+
+  // Pause Lenis smooth scrolling when the modal popup is open
+  useEffect(() => {
+    if (window.__lenis) {
+      if (isModalOpen) {
+        window.__lenis.stop();
+      } else {
+        window.__lenis.start();
+      }
+    }
+  }, [isModalOpen]);
 
   // Opens the modal form popup inspired by reference site candyexpressphotography.com
   const handleOpenBookingModal = (serviceTitle = '') => {

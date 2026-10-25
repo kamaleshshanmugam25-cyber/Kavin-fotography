@@ -8,7 +8,11 @@ export default function ScrollToTop() {
   useEffect(() => {
     if (!hash) {
       // Navigating to a page with no anchor: scroll immediately to top
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      if (window.__lenis) {
+        window.__lenis.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      }
     } else {
       // Navigating to a hash anchor: smoothly glide with navbar clearance once element is ready
       smoothScrollWithRetry(hash, 76);

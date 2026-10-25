@@ -24,13 +24,10 @@ const EVENT_TYPES = [
   'Birthday',
   'Baby Shower',
   'Maternity Shoot',
-  'Newborn Shoot',
-  'Drone Shoot',
   'Modeling Shoot',
   'Corporate Shoot',
   'Live Streaming',
   'LED Wall',
-  '360-Degree Video Booth',
   'Selfie Booth',
   'Other',
 ];

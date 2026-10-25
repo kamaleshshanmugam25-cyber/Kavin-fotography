@@ -24,10 +24,21 @@ export function smoothScrollTo(target, offset = 76) {
     const offsetPosition = elementPosition + window.pageYOffset - offset;
     const targetTop = Math.max(0, offsetPosition);
 
-    window.scrollTo({
-      top: targetTop,
-      behavior: 'smooth',
-    });
+    if (window.__lenis) {
+      window.__lenis.start();
+      window.__lenis.scrollTo(element, {
+        offset: -offset,
+        duration: 0.85,
+        lock: true,
+        force: true,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      });
+    } else {
+      window.scrollTo({
+        top: targetTop,
+        behavior: 'smooth',
+      });
+    }
 
     try {
       if (hashPart) {

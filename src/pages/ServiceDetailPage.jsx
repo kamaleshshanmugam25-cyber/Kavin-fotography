@@ -20,6 +20,7 @@ import {
 import { SERVICES } from '../data/services';
 import { STUDIO_INFO } from '../data/studioInfo';
 import { smoothScrollTo } from '../utils/scroll';
+import { getFocalPoint } from '../utils/imageFocalPoints';
 
 export default function ServiceDetailPage({ onBookService }) {
   const { serviceId } = useParams();
@@ -83,9 +84,9 @@ export default function ServiceDetailPage({ onBookService }) {
 
   return (
     <div className="min-h-screen bg-[#FFFDF7] text-[#1A1A1A] selection:bg-[#C8102E] selection:text-white">
-      {/* 1. Cinematic Hero Banner */}
-      <section className="relative min-h-[70vh] sm:min-h-[80vh] flex items-center justify-center overflow-hidden bg-[#2A040C]">
-        {/* Background Image with Slow Zoom */}
+      {/* 1. Cinematic Hero Banner (Matches Home Page Hero Layout, Visual Balance & Typography) */}
+      <section className="relative min-h-[100svh] min-h-screen w-full flex flex-col justify-end sm:justify-center items-center overflow-hidden bg-[#2A040C]">
+        {/* Background Image with Slow Subtle Motion */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <motion.div
             initial={{ scale: 1.08 }}
@@ -94,83 +95,106 @@ export default function ServiceDetailPage({ onBookService }) {
             className="w-full h-full"
           >
             <img
-              src={currentService.image}
+              src={currentService.heroImage || currentService.image}
               alt={currentService.alt || currentService.title}
-              style={{ objectPosition: currentService.objectPosition || 'center 20%' }}
-              className="w-full h-full object-cover filter brightness-[0.78] contrast-[1.05]"
+              style={{
+                objectPosition:
+                  currentService.heroObjectPosition ||
+                  currentService.objectPosition ||
+                  getFocalPoint(currentService.heroImage || currentService.image) ||
+                  'center 20%',
+              }}
+              className="w-full h-full object-cover filter brightness-[0.82] contrast-[1.05] saturate-[1.05]"
               loading="eager"
             />
           </motion.div>
-          {/* Gradients */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#2A040C] via-black/40 to-[#2A040C]/60" />
+          {/* Gradients - matching home page Hero */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#2A040C] via-[#2A040C]/65 sm:via-black/35 to-transparent sm:to-[#2A040C]/50" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#D4AF77]/10 blur-[130px] rounded-full pointer-events-none" />
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[650px] h-[250px] sm:h-[450px] bg-[#D4AF77]/10 blur-[100px] sm:blur-[140px] rounded-full pointer-events-none" />
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16 sm:py-36 text-center flex flex-col items-center">
+        {/* Hero Content - Lower third on mobile to keep faces completely unobstructed */}
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12 sm:py-32 text-center flex flex-col items-center w-full">
           {/* Breadcrumb Navigation */}
           <motion.div
-            initial={{ opacity: 0, y: -15 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#D4AF77] mb-4"
+            className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#D4AF77] mb-2 sm:mb-3"
           >
             <Link to="/" className="hover:text-white transition-colors">
               Home
             </Link>
-            <span className="text-gray-400">/</span>
+            <span className="text-[#D4AF77]/60">/</span>
             <Link to="/#services" className="hover:text-white transition-colors">
               Services
             </Link>
-            <span className="text-gray-400">/</span>
+            <span className="text-[#D4AF77]/60">/</span>
             <span className="text-[#FFFDF7] font-semibold">{currentService.title}</span>
           </motion.div>
 
-          {/* Badge */}
+          {/* Badge (Established / Category) */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#4A0715]/90 border border-[#D4AF77]/40 backdrop-blur-md mb-6 shadow-xl"
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#4A0715]/80 border border-[#D4AF77]/40 backdrop-blur-md mb-2 sm:mb-4 shadow-xl"
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#D4AF77]" />
-            <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-[#F3E9DC]">
-              {currentService.category} • {currentService.tag}
+            <Sparkles className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#D4AF77] shrink-0" />
+            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.25em] uppercase text-[#F3E9DC] whitespace-nowrap">
+              {currentService.category.toUpperCase()} • {currentService.tag.toUpperCase()}
             </span>
           </motion.div>
 
-          {/* Title */}
+          {/* Brand Signature */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="flex items-center justify-center gap-3 mb-1 sm:mb-3"
+          >
+            <h2 className="text-xs sm:text-base tracking-[0.25em] sm:tracking-[0.35em] uppercase font-semibold text-[#D4AF77]">
+              KANVI FOTOGRAPHY SIGNATURE
+            </h2>
+          </motion.div>
+
+          {/* Main Headline (Title & Italic Gradient Tag - Matches Homepage Hero) */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white tracking-tight leading-[1.15] mb-6 drop-shadow-xl"
+            transition={{ duration: 0.8, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="font-serif text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white tracking-tight leading-[1.18] sm:leading-[1.15] mb-2 sm:mb-4 max-w-4xl drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]"
           >
-            {currentService.title}
+            <span className="block mb-1 sm:mb-1.5 text-white">
+              {currentService.title}
+            </span>
+            <span className="block font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#FFFDF7] via-[#F3E9DC] to-[#D4AF77]">
+              {currentService.tag}
+            </span>
           </motion.h1>
 
-          {/* Subtitle / Description */}
+          {/* Supporting Text */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.35 }}
-            className="text-base sm:text-lg md:text-xl text-[#FFFDF7] font-light max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10 px-2 drop-shadow-md"
+            transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="text-xs sm:text-base md:text-xl text-[#FFFDF7] font-light max-w-2xl mx-auto leading-relaxed mb-4 sm:mb-8 px-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
           >
             {currentService.description}
           </motion.p>
 
-          {/* Action CTAs */}
+          {/* Action Buttons (Matches Homepage Hero Buttons) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto"
+            transition={{ duration: 0.8, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 w-full sm:w-auto px-4 sm:px-0 mb-4 sm:mb-0"
           >
             <button
               type="button"
               onClick={handleBookClick}
-              className="w-full sm:w-auto px-7 py-3.5 sm:px-8 sm:py-4 rounded-full bg-[#D4AF77] hover:bg-[#C29B63] text-[#2A040C] text-xs sm:text-sm font-bold tracking-[0.15em] uppercase transition-all duration-300 shadow-xl shadow-[#D4AF77]/30 hover:shadow-[#D4AF77]/50 hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer border border-[#D4AF77]"
+              className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-[#D4AF77] hover:bg-[#C29B63] text-[#2A040C] text-xs sm:text-sm font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase transition-all duration-300 shadow-xl shadow-[#D4AF77]/30 hover:shadow-[#D4AF77]/50 hover:-translate-y-0.5 flex items-center justify-center gap-2.5 cursor-pointer border border-[#D4AF77]"
             >
               <Calendar className="w-4 h-4 text-[#2A040C]" />
               <span>BOOK THIS SERVICE</span>
@@ -179,9 +203,9 @@ export default function ServiceDetailPage({ onBookService }) {
             <button
               type="button"
               onClick={scrollToGallery}
-              className="w-full sm:w-auto px-7 py-3.5 sm:px-8 sm:py-4 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold tracking-[0.15em] uppercase transition-all duration-300 backdrop-blur-md border border-white/20 flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-[#FFFDF7] hover:bg-[#D4AF77] text-[#2A040C] text-xs sm:text-sm font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 flex items-center justify-center gap-2.5 cursor-pointer border border-[#D4AF77]/50 group"
             >
-              <Camera className="w-4 h-4 text-[#D4AF77]" />
+              <Camera className="w-4 h-4 text-[#C29B63] group-hover:text-[#2A040C] transition-all duration-200" />
               <span>VIEW {photos.length} PHOTOGRAPHS</span>
             </button>
           </motion.div>

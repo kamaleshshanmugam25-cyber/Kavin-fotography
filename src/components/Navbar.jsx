@@ -11,8 +11,6 @@ export const WEDDINGS_MENU = [
   { id: 'reception-portrait', title: 'Reception Portrait', subtitle: 'Evening Stage & Glamour' },
   { id: 'wedding-rituals', title: 'Wedding Rituals', subtitle: 'Sacred Muhurtham & Thali' },
   { id: 'wedding-portrait', title: 'Wedding Portrait', subtitle: 'Traditional Silk Editorial' },
-  { id: 'christian-wedding', title: 'Christian Wedding', subtitle: 'White Gown & Church Vows' },
-  { id: 'muslim-wedding', title: 'Muslim Wedding', subtitle: 'Nikah Vows & Walima' },
 ];
 
 export const OUTDOOR_MENU = [
@@ -20,10 +18,7 @@ export const OUTDOOR_MENU = [
   { id: 'candid-photography', title: 'Candid Photography', subtitle: 'Unscripted Emotional Joy' },
   { id: 'maternity-photoshoots', title: 'Maternity Photoshoots', subtitle: 'Artistic Motherhood Glow' },
   { id: 'baby-shower-photography', title: 'Baby Shower (Valaikappu)', subtitle: 'Traditional Bangle Rituals' },
-  { id: 'newborn-baby-photoshoots', title: 'Newborn Baby Shoot', subtitle: 'Cozy Little Miracles' },
   { id: 'wedding-videography', title: 'Cinematic Films & Teasers', subtitle: '4K Ultra HD Cinema Reels' },
-  { id: 'drone-photography-videography', title: 'Drone Aerial Visuals', subtitle: 'Epic Grand Venue Sweeps' },
-  { id: '360-degree-video-booth', title: '360° Video Booth', subtitle: 'Interactive Spinning Platform' },
 ];
 
 export default function Navbar({ onBookClick }) {
@@ -52,14 +47,11 @@ export default function Navbar({ onBookClick }) {
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
     }
     return () => {
       document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
     };
   }, [mobileMenuOpen]);
 
@@ -67,29 +59,35 @@ export default function Navbar({ onBookClick }) {
     setMobileMenuOpen(false);
     setDesktopDropdown(null);
     document.body.style.overflow = '';
-    document.documentElement.style.overflow = '';
 
-    if (isHomePage) {
-      smoothScrollTo(href, 84);
-    } else {
-      const cleanHash = href.startsWith('#') ? href : `#${href}`;
-      navigate(`/${cleanHash}`);
-    }
+    requestAnimationFrame(() => {
+      if (isHomePage) {
+        smoothScrollTo(href, 84);
+      } else {
+        const cleanHash = href.startsWith('#') ? href : `#${href}`;
+        navigate(`/${cleanHash}`);
+      }
+    });
   };
 
   const handleServiceSelect = (serviceId) => {
     setDesktopDropdown(null);
     setMobileMenuOpen(false);
     document.body.style.overflow = '';
-    document.documentElement.style.overflow = '';
 
     navigate(`/services/${serviceId}`);
   };
 
   const handleLogoClick = (e) => {
     e.preventDefault();
+    setMobileMenuOpen(false);
+    setDesktopDropdown(null);
+    document.body.style.overflow = '';
+
     if (isHomePage) {
-      handleNavClick('#hero');
+      requestAnimationFrame(() => {
+        smoothScrollTo('#hero', 84);
+      });
     } else {
       navigate('/');
     }
@@ -99,12 +97,13 @@ export default function Navbar({ onBookClick }) {
     setMobileMenuOpen(false);
     setDesktopDropdown(null);
     document.body.style.overflow = '';
-    document.documentElement.style.overflow = '';
 
     if (onBookClick) {
       onBookClick();
     } else {
-      handleNavClick('#booking');
+      requestAnimationFrame(() => {
+        handleNavClick('#booking');
+      });
     }
   };
 
@@ -121,12 +120,12 @@ export default function Navbar({ onBookClick }) {
 
   return (
     <>
-      {/* Floating Pill Navbar (Responsive for 360px mobile to 4K ultra-wide) */}
+      {/* Floating Pill Navbar */}
       <motion.header
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-2.5 sm:top-5 inset-x-0 mx-auto w-[92%] sm:w-[94%] max-w-5xl xl:max-w-6xl z-[70] pointer-events-auto"
+        className="fixed top-2.5 sm:top-5 inset-x-0 mx-auto w-[92%] sm:w-[94%] max-w-5xl xl:max-w-6xl z-[85] pointer-events-auto"
       >
         <div className="bg-[#E7E2D8]/95 backdrop-blur-md border border-[#D4AF77]/40 rounded-full px-3 sm:px-5 py-1.5 sm:py-2.5 shadow-xl shadow-black/15 flex items-center justify-between gap-2 sm:gap-3 text-gray-900 transition-all duration-300">
           {/* Brand Logo & Studio Name (Left) */}
@@ -146,21 +145,21 @@ export default function Navbar({ onBookClick }) {
                 }}
               />
             </div>
-            <div className="flex items-baseline gap-1 sm:gap-1.5">
-              <span className="font-serif tracking-[0.12em] sm:tracking-[0.14em] text-sm sm:text-lg font-bold text-[#2A040C] group-hover:text-[#C8102E] transition-colors whitespace-nowrap leading-none">
+            <div className="flex flex-col text-left">
+              <span className="font-serif font-bold text-sm sm:text-base tracking-[0.18em] uppercase text-gray-900 group-hover:text-[#4A0715] transition-colors leading-tight">
                 KANVI
               </span>
-              <span className="text-[10px] tracking-[0.2em] font-medium text-[#7A5826] uppercase whitespace-nowrap leading-none hidden md:inline">
+              <span className="text-[8px] sm:text-[9px] tracking-[0.3em] uppercase text-[#7A5826] font-semibold -mt-0.5">
                 FOTOGRAPHY
               </span>
             </div>
           </a>
 
-          {/* Desktop Navigation Links (Center - Clean Title Case Pill Links) */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-[13px] xl:text-sm font-medium text-gray-800" aria-label="Main Navigation">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-xs xl:text-sm font-medium text-gray-700">
             {/* Home */}
             <a
-              href="#hero"
+              href="/"
               onClick={(e) => {
                 e.preventDefault();
                 handleNavClick('#hero');
@@ -327,7 +326,7 @@ export default function Navbar({ onBookClick }) {
 
           {/* Right Section: Compact on mobile, spacious on desktop */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            {/* CTA Button: Compact "Book" on mobile, "Book Your Event" on sm+ */}
+            {/* CTA Button */}
             <button
               type="button"
               onClick={handleBookingCTA}
@@ -363,28 +362,29 @@ export default function Navbar({ onBookClick }) {
         </div>
       </motion.header>
 
-      {/* Mobile Backdrop & Floating Card Menu */}
+      {/* Mobile Backdrop & Lightweight Card Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
-            {/* Backdrop Blur Overlay: closes on outside tap */}
+            {/* Backdrop Overlay: closes on outside tap */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.15 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[65]"
+              className="lg:hidden fixed inset-0 bg-black/60 z-[75]"
               aria-hidden="true"
             />
 
             <motion.div
-              initial={{ opacity: 0, y: -12, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.97 }}
-              transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="lg:hidden fixed top-[60px] sm:top-[74px] inset-x-3.5 sm:inset-x-6 mx-auto max-w-lg bg-[#E7E2D8]/98 backdrop-blur-2xl rounded-3xl border border-[#D4AF77]/40 shadow-2xl p-5 z-[70] max-h-[82vh] overflow-y-auto"
-              style={{ overscrollBehavior: 'contain' }}
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.15, ease: 'easeOut' }}
+              data-lenis-prevent
+              className="lg:hidden fixed top-[62px] sm:top-[74px] left-3.5 right-3.5 sm:left-6 sm:right-6 mx-auto max-w-lg bg-[#EAE5DC] rounded-3xl border border-[#D4AF77]/40 shadow-2xl p-5 z-[80] max-h-[82vh] overflow-y-auto"
+              style={{ overscrollBehavior: 'contain', WebkitOverflowScrolling: 'touch' }}
               role="dialog"
               aria-modal="true"
             >
@@ -507,13 +507,33 @@ export default function Navbar({ onBookClick }) {
                   <ArrowRight className="w-4 h-4 text-[#7A5826]" />
                 </button>
 
+                {/* Process */}
+                <button
+                  type="button"
+                  onClick={() => handleNavClick('#process')}
+                  className="text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900"
+                >
+                  <span>Our 4-Step Process</span>
+                  <ArrowRight className="w-4 h-4 text-[#7A5826]" />
+                </button>
+
+                {/* Reviews */}
+                <button
+                  type="button"
+                  onClick={() => handleNavClick('#reviews')}
+                  className="text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900"
+                >
+                  <span>Client Perspectives</span>
+                  <ArrowRight className="w-4 h-4 text-[#7A5826]" />
+                </button>
+
                 {/* Contact */}
                 <button
                   type="button"
                   onClick={() => handleNavClick('#contact')}
                   className="text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900"
                 >
-                  <span>Contact</span>
+                  <span>Contact &amp; Studio</span>
                   <ArrowRight className="w-4 h-4 text-[#7A5826]" />
                 </button>
               </div>

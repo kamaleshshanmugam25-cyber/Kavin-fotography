@@ -7,7 +7,7 @@ export const MODAL_EVENT_TYPES = [
   // Column 1 / Section 1
   'Engagement',
   'Reception & Wedding',
-  'Christian Type Wedding',
+  'Traditional Hindu Wedding',
   'Corporate Event Photography',
   'Puberty',
   'Interior Infra Photography',
@@ -15,7 +15,7 @@ export const MODAL_EVENT_TYPES = [
   // Column 2 / Section 2
   'Wedding',
   'Brahmin Type Wedding',
-  'Muslim Type Wedding',
+  'South Indian Wedding',
   'Birthday Event',
   'House Warming',
   'Construction Photography',
@@ -33,7 +33,7 @@ export const MODAL_EVENT_TYPES = [
   'Maternity Shoot',
   'Newborn Shoot',
   'Drone & Aerial Shoot',
-  'LED Wall & 360 Video Booth',
+  'LED Wall & Live Visuals',
 ];
 
 export default function BookingModal({ isOpen, onClose, preselectedService = '' }) {

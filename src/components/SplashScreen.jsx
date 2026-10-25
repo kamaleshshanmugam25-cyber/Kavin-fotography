@@ -8,44 +8,42 @@ export default function SplashScreen({ onComplete }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Smooth progress bar simulation
+    // Smooth, quick progress bar simulation
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
           return 100;
         }
-        return prev + 5;
+        return prev + 10;
       });
-    }, 60);
+    }, 50);
 
-    // Complete splash screen after 1.8 seconds
+    // Complete splash screen after branding presentation
     const timer = setTimeout(() => {
       setShow(false);
-      if (onComplete) onComplete();
-    }, 1900);
+    }, 1100);
 
     return () => {
       clearInterval(interval);
       clearTimeout(timer);
     };
-  }, [onComplete]);
+  }, []);
 
   const handleSkip = () => {
     setShow(false);
-    if (onComplete) onComplete();
   };
 
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={onComplete}>
       {show && (
         <motion.div
-          initial={{ opacity: 1 }}
+          key="splash-curtain"
+          initial={{ y: 0 }}
+          animate={{ y: 0 }}
           exit={{
-            opacity: 0,
-            scale: 1.04,
-            filter: 'blur(8px)',
-            transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+            y: '-100%',
+            transition: { duration: 0.85, ease: [0.76, 0, 0.24, 1] },
           }}
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#1F0308] text-white overflow-hidden select-none"
         >
