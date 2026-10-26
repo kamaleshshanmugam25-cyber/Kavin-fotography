@@ -15,7 +15,7 @@ export const HERO_SLIDES = [
     mobileObjectPosition: '62% 30%',
   },
   {
-    image: '/assets/web/wedding-temple-handinhand.jpg',
+    image: '/assets/web/wedding-temple-steps.jpg',
     alt: 'Traditional South Indian wedding couple at ancient stone temple wall by Kanvi Fotography',
     tag: 'Sacred Mandapam Vows',
     objectPosition: 'center 25%',

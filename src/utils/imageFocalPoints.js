@@ -6,16 +6,16 @@
 
 export const DESKTOP_FOCAL_POINTS = {
   // Wedding Ceremonies & Muhurtham
-  '/assets/web/wedding-gopuram-courtyard.jpg': 'center 25%',
-  '/assets/web/wedding-temple-handinhand.jpg': 'center 25%',
-  '/assets/web/wedding-temple-whisper.jpg': 'center 25%',
-  '/assets/web/wedding-temple-stone-editorial.jpg': 'center 50%',
-  '/assets/web/wedding-temple-steps.jpg': 'center 20%',
-  '/assets/web/wedding-pillar-embrace.jpg': 'center 25%',
-  '/assets/web/wedding-pillar-rest.jpg': 'center 25%',
-  '/assets/web/wedding-metti-ritual.jpg': 'center 22%',
-  '/assets/web/wedding-gopuram-portrait.jpg': 'center 15%',
-  '/assets/web/wedding-temple-redwall.jpg': 'center 25%',
+  '/assets/web/wedding-gopuram-courtyard.jpg': '68% 44%',
+  '/assets/web/wedding-temple-handinhand.jpg': '64% 42%',
+  '/assets/web/wedding-temple-whisper.jpg': 'center 56%',
+  '/assets/web/wedding-temple-stone-editorial.jpg': '52% 65%',
+  '/assets/web/wedding-temple-steps.jpg': '50% 55%',
+  '/assets/web/wedding-pillar-embrace.jpg': '35% 42%',
+  '/assets/web/wedding-pillar-rest.jpg': '65% 35%',
+  '/assets/web/wedding-metti-ritual.jpg': 'center 50%',
+  '/assets/web/wedding-gopuram-portrait.jpg': 'center 30%',
+  '/assets/web/wedding-temple-redwall.jpg': 'center 40%',
 
   // Bridal & Makeover Portraits
   '/assets/web/film-wedding-bala0744.jpg': '25% 25%',
@@ -52,16 +52,16 @@ export const MOBILE_FOCAL_POINTS = {
   '/assets/web/film-wedding-bala0744.jpg': '12% 55%',
 
   // 2. wedding-temple-handinhand: Couple vows & garlands are centered at X=65%
-  '/assets/web/wedding-temple-handinhand.jpg': '65% 25%',
+  '/assets/web/wedding-temple-handinhand.jpg': '65% 36%',
 
-  // 3. wedding-gopuram-courtyard: Couple & temple tower at X=62%, Y=30%
-  '/assets/web/wedding-gopuram-courtyard.jpg': '62% 30%',
+  // 3. wedding-gopuram-courtyard: Couple & temple tower at X=68%, Y=44%
+  '/assets/web/wedding-gopuram-courtyard.jpg': '68% 44%',
 
-  // 4. wedding-temple-whisper: Intimate close glance, heads start at Y=35%
-  '/assets/web/wedding-temple-whisper.jpg': '52% 28%',
+  // 4. wedding-temple-whisper: Intimate close glance, faces at Y=52%
+  '/assets/web/wedding-temple-whisper.jpg': '52% 52%',
 
   // 5. wedding-temple-stone-editorial: Couple is in the lower portion (Y=60-90%) of 16:9
-  '/assets/web/wedding-temple-stone-editorial.jpg': '52% 70%',
+  '/assets/web/wedding-temple-stone-editorial.jpg': '52% 65%',
 
   // 6. reception-golden-gown: Bride face and golden gown in upper section
   '/assets/web/reception-golden-gown.jpg': 'center 8%',
@@ -69,8 +69,8 @@ export const MOBILE_FOCAL_POINTS = {
   // 7. reception-garden-portrait: Couple centered in garden
   '/assets/web/reception-garden-portrait.jpg': '52% 25%',
 
-  // 8. wedding-temple-steps: Couple sitting on ancient temple steps
-  '/assets/web/wedding-temple-steps.jpg': '45% 45%',
+  // 8. wedding-temple-steps: Couple walking on ancient temple steps
+  '/assets/web/wedding-temple-steps.jpg': '50% 52%',
 
   // 9. bridal portraits
   '/assets/web/bridal-beauty-blue-silk-alt.jpg': 'center 10%',

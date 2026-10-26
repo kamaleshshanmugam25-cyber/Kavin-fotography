@@ -248,14 +248,14 @@ _Initiated via Kanvi Fotography Date Reservation Desk_`;
             <img
               src="/assets/web/wedding-temple-handinhand.jpg"
               alt="Kanvi Fotography Wedding Event Reservation"
-              style={{ objectPosition: isMobile ? '65% 25%' : 'center 25%' }}
-              className="w-full h-full object-cover filter brightness-[0.82] contrast-[1.05]"
+              style={{ objectPosition: isMobile ? '65% 36%' : '64% 42%' }}
+              className="w-full h-full object-cover filter brightness-[0.92] contrast-[1.05]"
               loading="eager"
             />
           </motion.div>
 
-          <div className="absolute inset-0 bg-gradient-to-t from-[#2A040C] via-[#2A040C]/65 via-50% to-transparent sm:to-[#2A040C]/50" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#2A040C] via-[#2A040C]/50 via-65% to-transparent sm:to-[#2A040C]/35" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent pointer-events-none" />
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[700px] h-[300px] sm:h-[450px] bg-[radial-gradient(ellipse_at_center,_rgba(212,175,119,0.18),_transparent_70%)] pointer-events-none rounded-full" />
         </div>
 

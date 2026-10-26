@@ -62,15 +62,15 @@ export default function ClientPerspectivesPage({ onBookClick }) {
             <img
               src="/assets/web/wedding-temple-whisper.jpg"
               alt="Kanvi Fotography Client Perspectives and Stories"
-              style={{ objectPosition: isMobile ? '52% 28%' : 'center 25%' }}
-              className="w-full h-full object-cover filter brightness-[0.85] contrast-[1.05]"
+              style={{ objectPosition: isMobile ? '52% 52%' : 'center 56%' }}
+              className="w-full h-full object-cover filter brightness-[0.92] contrast-[1.05]"
               loading="eager"
             />
           </motion.div>
 
           {/* Luxury Burgundy & Gold Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#2A040C] via-[#2A040C]/65 via-50% to-transparent sm:to-[#2A040C]/50" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#2A040C] via-[#2A040C]/50 via-65% to-transparent sm:to-[#2A040C]/35" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent pointer-events-none" />
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[650px] h-[250px] sm:h-[450px] bg-[radial-gradient(ellipse_at_center,_rgba(212,175,119,0.15),_transparent_70%)] rounded-full pointer-events-none" />
         </div>
 
