@@ -102,6 +102,12 @@ export default function Footer({ onBookClick }) {
                 <Link to="/about" className="text-[#FFFDF7]/85 hover:text-[#D4AF77] transition-colors cursor-pointer">About Founder &amp; Vision</Link>
               </li>
               <li>
+                <Link to="/process" className="text-[#FFFDF7]/85 hover:text-[#D4AF77] transition-colors cursor-pointer">Our 4-Step Process</Link>
+              </li>
+              <li>
+                <Link to="/client-perspectives" className="text-[#FFFDF7]/85 hover:text-[#D4AF77] transition-colors cursor-pointer">Client Perspectives &amp; Stories</Link>
+              </li>
+              <li>
                 <button
                   type="button"
                   onClick={() => handleNavClick('#services')}

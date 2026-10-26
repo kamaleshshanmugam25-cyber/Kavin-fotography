@@ -14,12 +14,14 @@ export const SERVICES = [
     description:
       'Stunning bridal makeover, royal silk saree draping, temple jewellery, and regal close-up portraits celebrating bridal elegance and intricate craftsmanship.',
     image: '/assets/web/bridal-beauty-blue-silk.jpg',
-    heroImage: '/assets/web/wedding-gopuram-courtyard.jpg',
-    objectPosition: 'center 8%',
+    heroImage: '/assets/web/bridal-beauty-blue-silk-alt.jpg',
+    objectPosition: 'center 10%',
+    mobileObjectPosition: 'center 10%',
     alt: 'Bridal makeover and South Indian temple jewelry portrait by Kanvi Fotography',
     features: ['Bridal Makeover Glow', 'Temple Jewelry & Saree Detailing', 'Haldi & Mehendi Close-ups'],
     gallery: [
       '/assets/web/bridal-beauty-blue-silk.jpg',
+      '/assets/web/bridal-beauty-blue-silk-alt.jpg',
       '/assets/web/bridal-makeup-macro.jpg',
       '/assets/web/bridal-window-portrait.jpg',
       '/assets/web/bridal-window-full.jpg',
@@ -37,7 +39,8 @@ export const SERVICES = [
       'The romantic first milestone of your wedding journey—ring exchange ceremonies, sacred Nishchithartham rituals, and intimate couple portraits.',
     image: '/assets/web/candid-temple-lawn-hands.jpg',
     heroImage: '/assets/web/candid-temple-lawn-wide.jpg',
-    objectPosition: 'center 12%',
+    objectPosition: 'center 15%',
+    mobileObjectPosition: 'center 15%',
     alt: 'Romantic engagement ring ceremony and couple photography by Kanvi Fotography',
     features: ['Ring Exchange Moments', 'Intimate Couple Session', 'Tradition & Festivity'],
     gallery: [
@@ -57,14 +60,14 @@ export const SERVICES = [
     description:
       'High-energy, glamorous stage and couple portraits featuring dramatic evening lighting, grand bridal gowns, elegant tuxedos, and guest celebrations.',
     image: '/assets/web/reception-golden-gown.jpg',
-    heroImage: '/assets/web/reception-sparkler-tunnel.jpg',
-    objectPosition: 'center 0%',
+    heroImage: '/assets/web/reception-golden-gown.jpg',
+    objectPosition: 'center 15%',
+    mobileObjectPosition: 'center 8%',
     alt: 'Grand wedding reception evening photography and couple portrait by Kanvi Fotography',
     features: ['Stage & Ambient Lighting', 'Grand Couple Entrance', 'Guest & VIP Greetings'],
     gallery: [
       '/assets/web/reception-golden-gown.jpg',
       '/assets/web/reception-sparkler-tunnel.jpg',
-      '/assets/web/hero-grand-ballroom.jpg',
       '/assets/web/reception-garden-portrait.jpg',
       '/assets/web/reception-garden-walk.jpg',
       '/assets/web/reception-moon-lanterns.jpg',
@@ -80,7 +83,8 @@ export const SERVICES = [
       'Deeply reverent documentation of sacred Hindu wedding traditions—Muhurtham, Mangalsutra / Thali tying, Saptapadi, Metti ceremony, and Akshata blessings.',
     image: '/assets/web/wedding-temple-handinhand.jpg',
     heroImage: '/assets/web/wedding-temple-handinhand.jpg',
-    objectPosition: 'center 20%',
+    objectPosition: 'center 25%',
+    mobileObjectPosition: '65% 25%',
     alt: 'Traditional Indian wedding ceremony and sacred rituals by Kanvi Fotography',
     features: ['Thali & Mangalsutra Tying', 'Saptapadi & Metti Ceremony', 'Garland Exchange (Maalai Maatral)'],
     gallery: [
@@ -102,8 +106,9 @@ export const SERVICES = [
     description:
       'Regal, fine-art editorial couple portraiture. Preserving the splendor of rich Kanchipuram silk sarees, dhotis, and royal Mandapam architecture in Trichy.',
     image: '/assets/web/wedding-gopuram-courtyard.jpg',
-    heroImage: '/assets/web/wedding-temple-stone-editorial.jpg',
-    objectPosition: 'center 15%',
+    heroImage: '/assets/web/wedding-gopuram-courtyard.jpg',
+    objectPosition: 'center 25%',
+    mobileObjectPosition: '62% 30%',
     alt: 'Regal traditional wedding couple portrait session in Trichy by Kanvi Fotography',
     features: ['Editorial Mandapam Posing', 'Regal Couple Aesthetics', 'Heirloom Fine-Art Quality'],
     gallery: [
@@ -124,10 +129,13 @@ export const SERVICES = [
     description:
       'Unscripted, genuine moments of spontaneous laughter, tearful blessings, and stolen glances captured naturally without forced poses.',
     image: '/assets/web/candid-flowering-tree-kiss.jpg',
-    objectPosition: 'center 15%',
+    heroImage: '/assets/web/wedding-temple-whisper.jpg',
+    objectPosition: 'center 25%',
+    mobileObjectPosition: '52% 28%',
     alt: 'Candid emotional wedding moment captured naturally by Kanvi Fotography',
     features: ['Unposed Storytelling', 'Expressive Moments', 'Natural Light & Mood'],
     gallery: [
+      '/assets/web/wedding-temple-whisper.jpg',
       '/assets/web/candid-flowering-tree-kiss.jpg',
       '/assets/web/candid-outdoor-hug.jpg',
       '/assets/web/candid-outdoor-smile.jpg',
@@ -145,7 +153,9 @@ export const SERVICES = [
     description:
       'Creative destination concepts, scenic outdoor landscapes, sunset beaches, and cinematic outfit changes tailored to your love story.',
     image: '/assets/web/prewedding-beach-kneel.jpg',
-    objectPosition: 'center 20%',
+    heroImage: '/assets/web/prewedding-beach-kneel.jpg',
+    objectPosition: '70% center',
+    mobileObjectPosition: '75% center',
     alt: 'Scenic outdoor pre-wedding couple photoshoot by Kanvi Fotography',
     features: ['Scenic Destination Shoots', 'Multiple Outfit Changes', 'Story Concept Planning'],
     gallery: [
@@ -168,13 +178,15 @@ export const SERVICES = [
     description:
       'Artistic, tender maternity portraits celebrating the beauty, maternal glow, and serene anticipation of welcoming new life.',
     image: '/assets/web/candid-flowering-tree-kiss.jpg',
-    objectPosition: 'center 15%',
+    heroImage: '/assets/web/bridal-window-portrait.jpg',
+    objectPosition: 'center 30%',
+    mobileObjectPosition: 'center 25%',
     alt: 'Artistic outdoor maternity photoshoot by Kanvi Fotography',
     features: ['Golden Hour Outdoor Shoots', 'Studio & Lifestyle Posing', 'Couple & Bump Portraits'],
     gallery: [
+      '/assets/web/bridal-window-portrait.jpg',
       '/assets/web/candid-flowering-tree-kiss.jpg',
       '/assets/web/candid-outdoor-smile.jpg',
-      '/assets/web/bridal-window-portrait.jpg',
       '/assets/web/candid-golden-indoor.jpg',
     ],
   },
@@ -187,7 +199,9 @@ export const SERVICES = [
     description:
       'Honoring motherhood with traditional Valaikappu / Seemantham rituals, glass bangle ceremonies, joyful maternal blessings, and warm family portraits.',
     image: '/assets/web/wedding-metti-ritual.jpg',
-    objectPosition: 'center 25%',
+    heroImage: '/assets/web/wedding-metti-ritual.jpg',
+    objectPosition: 'center 22%',
+    mobileObjectPosition: 'center 22%',
     alt: 'Traditional Indian baby shower and bangle ceremony photography by Kanvi Fotography',
     features: ['Traditional Valaikappu Rituals', 'Maternal Portraits', 'Family Gatherings & Blessings'],
     gallery: [

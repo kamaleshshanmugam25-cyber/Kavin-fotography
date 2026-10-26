@@ -16,6 +16,7 @@ import {
   Navigation,
 } from 'lucide-react';
 import { STUDIO_INFO, generateWhatsAppBookingUrl } from '../data/studioInfo';
+import { useIsMobile } from '../utils/useIsMobile';
 
 const CONTACT_EVENT_TYPES = [
   'Wedding',
@@ -59,6 +60,7 @@ const FAQS = [
 ];
 
 export default function ContactPage() {
+  const isMobile = useIsMobile(640);
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -144,21 +146,22 @@ export default function ContactPage() {
             className="w-full h-full"
           >
             <img
-              src="/assets/web/reception-sparkler-tunnel.jpg"
-              alt="Kanvi Fotography Reception & Event Celebration"
-              className="w-full h-full object-cover object-center filter brightness-[0.78] contrast-[1.05]"
+              src="/assets/web/wedding-temple-steps.jpg"
+              alt="Kanvi Fotography Traditional South Indian Wedding"
+              style={{ objectPosition: isMobile ? '45% 45%' : 'center 20%' }}
+              className="w-full h-full object-cover filter brightness-[0.85] contrast-[1.05]"
               loading="eager"
             />
           </motion.div>
 
           {/* Gradients matching website theme */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#2A040C] via-[#2A040C]/65 sm:via-black/35 to-transparent sm:to-[#2A040C]/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#2A040C] via-[#2A040C]/65 via-50% to-transparent sm:to-[#2A040C]/50" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none" />
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[650px] h-[250px] sm:h-[450px] bg-[#D4AF77]/10 blur-[100px] sm:blur-[140px] rounded-full pointer-events-none" />
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[650px] h-[250px] sm:h-[450px] bg-[radial-gradient(ellipse_at_center,_rgba(212,175,119,0.15),_transparent_70%)] rounded-full pointer-events-none" />
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12 sm:py-32 text-center flex flex-col items-center w-full">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-8 sm:py-32 text-center flex flex-col items-center justify-end sm:justify-center mt-auto sm:mt-0 w-full">
           {/* Breadcrumb Navigation */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}

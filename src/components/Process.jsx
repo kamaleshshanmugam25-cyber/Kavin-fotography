@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, FileText, Camera, Film, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { MessageCircle, FileText, Camera, Film, Sparkles, ArrowRight } from 'lucide-react';
 import { PROCESS_STEPS } from '../data/process';
 
 const STEP_ICONS = [MessageCircle, FileText, Camera, Film];
@@ -83,6 +84,17 @@ export default function Process() {
                 </motion.div>
               );
             })}
+          </div>
+
+          {/* Deep-Dive Page Link */}
+          <div className="mt-12 text-center">
+            <Link
+              to="/process"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#4A0715] hover:bg-[#C8102E] text-white font-medium text-xs sm:text-sm tracking-[0.15em] uppercase transition-all duration-300 shadow-md hover:shadow-xl cursor-pointer"
+            >
+              <span>Explore Full 4-Step Journey &amp; Standards</span>
+              <ArrowRight className="w-4 h-4 text-[#D4AF77]" />
+            </Link>
           </div>
         </div>
       </div>

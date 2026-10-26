@@ -4,42 +4,63 @@ import { useNavigate } from 'react-router-dom';
 import { Sparkles, Calendar, ArrowRight } from 'lucide-react';
 import { STUDIO_INFO } from '../data/studioInfo';
 import { smoothScrollTo } from '../utils/scroll';
+import { useIsMobile } from '../utils/useIsMobile';
 
-const HERO_SLIDES = [
+export const HERO_SLIDES = [
   {
-    image: '/assets/web/hero-grand-ballroom.jpg',
-    alt: 'Grand luxury chandelier banquet hall & couple moon silhouette by Kanvi Fotography',
-    tag: 'Royal Reception Grandeur',
-    objectPosition: 'center 20%',
+    image: '/assets/web/wedding-gopuram-courtyard.jpg',
+    alt: 'Regal South Indian wedding bride and groom at temple Gopuram by Kanvi Fotography',
+    tag: 'Royal Heritage Muhurtham',
+    objectPosition: 'center 25%',
+    mobileObjectPosition: '62% 30%',
   },
   {
     image: '/assets/web/wedding-temple-handinhand.jpg',
     alt: 'Traditional South Indian wedding couple at ancient stone temple wall by Kanvi Fotography',
-    tag: 'Sacred Heritage Rituals',
-    objectPosition: 'center 20%',
+    tag: 'Sacred Mandapam Vows',
+    objectPosition: 'center 25%',
+    mobileObjectPosition: '65% 25%',
   },
   {
-    image: '/assets/web/reception-sparkler-tunnel.jpg',
-    alt: 'Dramatic golden sparkler light tunnel reception by Kanvi Fotography',
-    tag: 'Cinematic Night Magic',
-    objectPosition: 'center 30%',
+    image: '/assets/web/wedding-temple-whisper.jpg',
+    alt: 'Intimate South Indian wedding couple emotional glance in bridal silk by Kanvi Fotography',
+    tag: 'Timeless Wedding Poetry',
+    objectPosition: 'center 25%',
+    mobileObjectPosition: '52% 28%',
   },
   {
     image: '/assets/web/film-wedding-bala0744.jpg',
-    alt: 'Golden hour bridal portrait with veil and sunlight by Kanvi Fotography',
-    tag: 'Golden Hour Elegance',
-    objectPosition: 'center 15%',
+    alt: 'Golden hour traditional bridal portrait with veil and silk by Kanvi Fotography',
+    tag: 'Golden Hour Bridal Elegance',
+    objectPosition: '25% 25%',
+    mobileObjectPosition: '12% 55%',
   },
   {
-    image: '/assets/web/hilltop-romance-cv011193.jpg',
-    alt: 'Couple walking hand in hand on a scenic hilltop by Kanvi Fotography',
-    tag: 'Scenic Hilltop Romance',
-    objectPosition: 'center 20%',
+    image: '/assets/web/reception-golden-gown.jpg',
+    alt: 'Royal wedding reception bride in magnificent golden gown by Kanvi Fotography',
+    tag: 'Grand Evening Reception',
+    objectPosition: 'center 15%',
+    mobileObjectPosition: 'center 8%',
+  },
+  {
+    image: '/assets/web/wedding-metti-ritual.jpg',
+    alt: 'Sacred South Indian wedding Metti ceremony in temple courtyard by Kanvi Fotography',
+    tag: 'Sacred Metti Ceremony',
+    objectPosition: 'center 50%',
+    mobileObjectPosition: '48% 50%',
+  },
+  {
+    image: '/assets/web/wedding-pillar-rest.jpg',
+    alt: 'Traditional South Indian wedding couple intimate portrait by carved temple pillar by Kanvi Fotography',
+    tag: 'Mandapam Pillar Romance',
+    objectPosition: '65% 35%',
+    mobileObjectPosition: '68% 38%',
   },
 ];
 
 export default function Hero({ onExploreClick, onBookClick }) {
   const navigate = useNavigate();
+  const isMobile = useIsMobile(640);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Auto-advance hero slides every 5 seconds for a relaxed, cinematic experience
@@ -81,22 +102,26 @@ export default function Hero({ onExploreClick, onBookClick }) {
             <img
               src={HERO_SLIDES[currentSlide].image}
               alt={HERO_SLIDES[currentSlide].alt}
-              style={{ objectPosition: HERO_SLIDES[currentSlide].objectPosition || 'center center' }}
-              className="w-full h-full object-cover filter brightness-[0.82] contrast-[1.05] saturate-[1.05]"
+              style={{
+                objectPosition: isMobile
+                  ? (HERO_SLIDES[currentSlide].mobileObjectPosition || HERO_SLIDES[currentSlide].objectPosition)
+                  : HERO_SLIDES[currentSlide].objectPosition,
+              }}
+              className="w-full h-full object-cover filter brightness-[0.85] contrast-[1.05] saturate-[1.05]"
               loading="eager"
             />
           </motion.div>
         </AnimatePresence>
 
-        {/* Crisp, Balanced Cinematic Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#2A040C]/95 via-black/35 to-transparent sm:to-[#2A040C]/50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none" />
+        {/* Crisp, Balanced Cinematic Overlay - Transparent on mobile top 55% so wedding couple is in full light */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#2A040C] via-[#2A040C]/65 via-50% to-transparent sm:to-[#2A040C]/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent pointer-events-none" />
         {/* Subtle Ambient Vignette */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[650px] h-[250px] sm:h-[450px] bg-[radial-gradient(ellipse_at_center,_rgba(212,175,119,0.15),_transparent_70%)] rounded-full pointer-events-none" />
       </div>
 
       {/* Slide Navigation Dots */}
-      <div className="absolute bottom-3 sm:bottom-8 z-20 flex items-center gap-2">
+      <div className="absolute bottom-2.5 sm:bottom-8 z-20 flex items-center gap-2">
         {HERO_SLIDES.map((slide, idx) => (
           <button
             key={idx}
@@ -112,8 +137,8 @@ export default function Hero({ onExploreClick, onBookClick }) {
         ))}
       </div>
 
-      {/* Content Container - Positioned towards the lower area on mobile so couple's face & photo are clearly visible */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:py-32 pb-12 sm:pb-32 text-center flex flex-col items-center justify-end sm:justify-center mt-auto sm:mt-0">
+      {/* Content Container - Positioned cleanly in lower third on mobile so wedding faces are unobstructed */}
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:py-32 pb-8 sm:pb-32 text-center flex flex-col items-center justify-end sm:justify-center mt-auto sm:mt-0">
         {/* Established Badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}

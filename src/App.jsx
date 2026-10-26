@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -15,6 +16,8 @@ import ServiceDetailPage from './pages/ServiceDetailPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import BookingPage from './pages/BookingPage';
+import ProcessPage from './pages/ProcessPage';
+import ClientPerspectivesPage from './pages/ClientPerspectivesPage';
 import ScrollToTop from './components/ScrollToTop';
 import SplashScreen from './components/SplashScreen';
 import Footer from './components/Footer';
@@ -49,6 +52,81 @@ function HomePage({ onBookClick, onExploreClick }) {
       {/* 8. Booking Enquiry Form & Direct Contacts */}
       <BookingForm />
     </main>
+  );
+}
+
+function AnimatedAppRoutes({ onOpenBooking, onExploreClick }) {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
+        className="w-full flex-1"
+      >
+        <ScrollToTop />
+        <Routes location={location}>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                onBookClick={(service) => onOpenBooking(service)}
+                onExploreClick={onExploreClick}
+              />
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <AboutPage
+                onBookClick={(service) => onOpenBooking(service)}
+              />
+            }
+          />
+          <Route
+            path="/process"
+            element={
+              <ProcessPage
+                onBookClick={(service) => onOpenBooking(service)}
+              />
+            }
+          />
+          <Route path="/our-process" element={<Navigate to="/process" replace />} />
+          <Route
+            path="/client-perspectives"
+            element={
+              <ClientPerspectivesPage
+                onBookClick={(service) => onOpenBooking(service)}
+              />
+            }
+          />
+          <Route path="/testimonials" element={<Navigate to="/client-perspectives" replace />} />
+          <Route path="/reviews" element={<Navigate to="/client-perspectives" replace />} />
+          <Route
+            path="/contact"
+            element={<ContactPage />}
+          />
+          <Route
+            path="/booking"
+            element={<BookingPage />}
+          />
+          <Route path="/book" element={<Navigate to="/booking" replace />} />
+          <Route
+            path="/services/:serviceId"
+            element={
+              <ServiceDetailPage
+                onBookService={(serviceTitle) => onOpenBooking(serviceTitle)}
+              />
+            }
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </motion.div>
+    </AnimatePresence>
   );
 }
 
@@ -114,54 +192,16 @@ export default function App() {
 
   return (
     <Router>
-      <ScrollToTop />
       {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
-      <div className="min-h-screen bg-[#2A040C] text-[#1A1A1A] selection:bg-[#C8102E] selection:text-white relative overflow-x-clip w-full max-w-full">
+      <div className="min-h-screen bg-[#2A040C] text-[#1A1A1A] selection:bg-[#C8102E] selection:text-white relative overflow-x-clip w-full max-w-full flex flex-col">
         {/* Navigation Bar */}
         <Navbar onBookClick={() => handleOpenBookingModal()} />
 
-        {/* Dynamic Multi-Page Routes */}
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage
-                onBookClick={(service) => handleOpenBookingModal(service)}
-                onExploreClick={handleExploreClick}
-              />
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <AboutPage
-                onBookClick={(service) => handleOpenBookingModal(service)}
-              />
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <ContactPage />
-            }
-          />
-          <Route
-            path="/booking"
-            element={
-              <BookingPage />
-            }
-          />
-          <Route path="/book" element={<Navigate to="/booking" replace />} />
-          <Route
-            path="/services/:serviceId"
-            element={
-              <ServiceDetailPage
-                onBookService={(serviceTitle) => handleOpenBookingModal(serviceTitle)}
-              />
-            }
-          />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        {/* Dynamic Multi-Page Routes with Fade-In Page Transition */}
+        <AnimatedAppRoutes
+          onOpenBooking={handleOpenBookingModal}
+          onExploreClick={handleExploreClick}
+        />
 
         {/* Footer */}
         <Footer onBookClick={() => handleOpenBookingModal()} />

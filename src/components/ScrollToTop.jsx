@@ -10,9 +10,10 @@ export default function ScrollToTop() {
       // Navigating to a page with no anchor: scroll immediately to top
       if (window.__lenis) {
         window.__lenis.scrollTo(0, { immediate: true });
-      } else {
-        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       }
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
     } else {
       // Navigating to a hash anchor: smoothly glide with navbar clearance once element is ready
       smoothScrollWithRetry(hash, 76);

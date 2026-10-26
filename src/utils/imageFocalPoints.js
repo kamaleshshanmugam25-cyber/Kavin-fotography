@@ -1,108 +1,108 @@
 /**
- * KANVI FOTOGRAPHY - Centralized Image Focal Point & Orientation System
- * Ensures faces, emotions, and critical subject matter are always perfectly visible
- * across all cards, heroes, gallery grids, and modals regardless of viewport or aspect ratio.
+ * KANVI FOTOGRAPHY - Centralized Image Focal Point & Responsive Orientation System
+ * Ensures faces, emotions, and critical wedding subject matter are always perfectly visible
+ * across both mobile and desktop viewports regardless of aspect ratio.
  */
 
-export const IMAGE_FOCAL_POINTS = {
-  // Ultra-close bridal portraits & gowns
-  '/assets/web/reception-golden-gown.jpg': 'center 0%',
+export const DESKTOP_FOCAL_POINTS = {
+  // Wedding Ceremonies & Muhurtham
+  '/assets/web/wedding-gopuram-courtyard.jpg': 'center 25%',
+  '/assets/web/wedding-temple-handinhand.jpg': 'center 25%',
+  '/assets/web/wedding-temple-whisper.jpg': 'center 25%',
+  '/assets/web/wedding-temple-stone-editorial.jpg': 'center 50%',
+  '/assets/web/wedding-temple-steps.jpg': 'center 20%',
+  '/assets/web/wedding-pillar-embrace.jpg': 'center 25%',
+  '/assets/web/wedding-pillar-rest.jpg': 'center 25%',
+  '/assets/web/wedding-metti-ritual.jpg': 'center 22%',
+  '/assets/web/wedding-gopuram-portrait.jpg': 'center 15%',
+  '/assets/web/wedding-temple-redwall.jpg': 'center 25%',
+
+  // Bridal & Makeover Portraits
+  '/assets/web/film-wedding-bala0744.jpg': '25% 25%',
+  '/assets/web/bridal-beauty-blue-silk-alt.jpg': 'center 10%',
   '/assets/web/bridal-beauty-blue-silk.jpg': 'center 8%',
-  '/assets/web/bridal-beauty-blue-silk-alt.jpg': 'center 8%',
-  '/assets/web/bridal-window-portrait.jpg': 'center 35%',
+  '/assets/web/bridal-makeup-macro.jpg': 'center center',
+  '/assets/web/bridal-window-portrait.jpg': 'center 30%',
   '/assets/web/bridal-window-full.jpg': 'center 35%',
 
-  // Standing couple portraits & ceremonies (faces in top 10-18%)
+  // Evening Reception & Glamour
+  '/assets/web/reception-golden-gown.jpg': 'center 15%',
+  '/assets/web/reception-garden-portrait.jpg': 'center 25%',
+  '/assets/web/reception-sparkler-tunnel.jpg': 'center 35%',
+  '/assets/web/reception-garden-walk.jpg': 'center 20%',
+  '/assets/web/reception-moon-lanterns.jpg': 'center center',
+
+  // Candid & Pre-Wedding Shoots
+  '/assets/web/candid-temple-lawn-wide.jpg': 'center 15%',
   '/assets/web/candid-temple-lawn-hands.jpg': 'center 12%',
   '/assets/web/candid-temple-lawn-walk.jpg': 'center 15%',
-  '/assets/web/candid-temple-lawn-dance.jpg': 'center 15%',
-  '/assets/web/candid-temple-lawn-wide.jpg': 'center 15%',
   '/assets/web/candid-temple-lawn-gaze.jpg': 'center 15%',
-  '/assets/web/candid-flowering-tree-kiss.jpg': 'center 15%',
-  '/assets/web/candid-outdoor-smile.jpg': 'center 15%',
+  '/assets/web/candid-temple-lawn-dance.jpg': 'center 15%',
+  '/assets/web/candid-flowering-tree-kiss.jpg': 'center 55%',
+  '/assets/web/candid-outdoor-smile.jpg': 'center 30%',
   '/assets/web/candid-outdoor-hug.jpg': 'center 22%',
-
-  // Temple & Heritage rituals
-  '/assets/web/wedding-gopuram-courtyard.jpg': 'center 15%',
-  '/assets/web/wedding-gopuram-portrait.jpg': 'center 15%',
-  '/assets/web/wedding-metti-ritual.jpg': 'center 22%',
-  '/assets/web/wedding-temple-steps.jpg': 'center 15%',
-  '/assets/web/wedding-temple-whisper.jpg': 'center 15%',
-  '/assets/web/wedding-temple-handinhand.jpg': 'center 20%',
-
-  // Christian & Pastel elegance
-  '/assets/web/christian-bridal-prayer.jpg': 'center 15%',
-  '/assets/web/christian-pastel-gown.jpg': 'center 15%',
-
-  // Pre-wedding & Beach portraits
-  '/assets/web/prewedding-beach-cyan-dress.jpg': 'center 15%',
-  '/assets/web/prewedding-beach-lift.jpg': 'center 15%',
-  '/assets/web/prewedding-beach-surf-lift.jpg': 'center 18%',
-
-  // Reception portraits
-  '/assets/web/reception-garden-portrait.jpg': 'center 15%',
-  '/assets/web/reception-garden-walk.jpg': 'center 15%',
-
-  // Widescreen landscapes / Stage architecture
-  '/assets/web/hero-grand-ballroom.jpg': 'center center',
-  '/assets/web/reception-sparkler-tunnel.jpg': 'center 35%',
-  '/assets/web/reception-moon-lanterns.jpg': 'center center',
-  '/assets/web/bridal-makeup-macro.jpg': 'center center',
-  '/assets/web/candid-golden-indoor.jpg': 'center center',
-  '/assets/web/prewedding-beach-kneel.jpg': 'center center',
-  '/assets/web/prewedding-beach-kiss.jpg': 'center center',
-  '/assets/web/prewedding-beach-forehead.jpg': 'center center',
-  '/assets/web/prewedding-beach-walk.jpg': 'center center',
-  '/assets/web/prewedding-beach-waves.jpg': 'center center',
-  '/assets/web/wedding-pillar-embrace.jpg': 'center center',
-  '/assets/web/wedding-pillar-rest.jpg': 'center center',
-  '/assets/web/wedding-temple-redwall.jpg': 'center center',
-  '/assets/web/wedding-temple-stone-editorial.jpg': 'center center',
-  '/assets/web/christian-sunset-mudra.jpg': 'center center',
-  '/assets/web/film-wedding-bala0744.jpg': 'center 35%',
+  '/assets/web/prewedding-beach-kneel.jpg': '70% center',
+  '/assets/web/prewedding-beach-walk.jpg': 'center 25%',
+  '/assets/web/prewedding-beach-lift.jpg': 'center 25%',
 };
 
-export const LANDSCAPE_IMAGES = new Set([
-  '/assets/web/hero-grand-ballroom.jpg',
-  '/assets/web/reception-sparkler-tunnel.jpg',
-  '/assets/web/reception-moon-lanterns.jpg',
-  '/assets/web/wedding-temple-handinhand.jpg',
-  '/assets/web/wedding-temple-redwall.jpg',
-  '/assets/web/wedding-temple-stone-editorial.jpg',
-  '/assets/web/wedding-pillar-embrace.jpg',
-  '/assets/web/wedding-pillar-rest.jpg',
-  '/assets/web/prewedding-beach-kneel.jpg',
-  '/assets/web/prewedding-beach-kiss.jpg',
-  '/assets/web/prewedding-beach-forehead.jpg',
-  '/assets/web/prewedding-beach-walk.jpg',
-  '/assets/web/prewedding-beach-waves.jpg',
-  '/assets/web/bridal-makeup-macro.jpg',
-  '/assets/web/bridal-beauty-blue-silk.jpg',
-  '/assets/web/bridal-window-portrait.jpg',
-  '/assets/web/bridal-window-full.jpg',
-  '/assets/web/candid-golden-indoor.jpg',
-  '/assets/web/candid-outdoor-hug.jpg',
-  '/assets/web/christian-sunset-mudra.jpg',
-  '/assets/web/film-wedding-bala0744.jpg',
-]);
+export const MOBILE_FOCAL_POINTS = {
+  // CRITICAL MOBILE-CALIBRATED POSITIONS (narrow 9:19.5 viewport)
+  // 1. film-wedding-bala0744: Bride is on the far left (X=0-25%)
+  '/assets/web/film-wedding-bala0744.jpg': '12% 55%',
+
+  // 2. wedding-temple-handinhand: Couple vows & garlands are centered at X=65%
+  '/assets/web/wedding-temple-handinhand.jpg': '65% 25%',
+
+  // 3. wedding-gopuram-courtyard: Couple & temple tower at X=62%, Y=30%
+  '/assets/web/wedding-gopuram-courtyard.jpg': '62% 30%',
+
+  // 4. wedding-temple-whisper: Intimate close glance, heads start at Y=35%
+  '/assets/web/wedding-temple-whisper.jpg': '52% 28%',
+
+  // 5. wedding-temple-stone-editorial: Couple is in the lower portion (Y=60-90%) of 16:9
+  '/assets/web/wedding-temple-stone-editorial.jpg': '52% 70%',
+
+  // 6. reception-golden-gown: Bride face and golden gown in upper section
+  '/assets/web/reception-golden-gown.jpg': 'center 8%',
+
+  // 7. reception-garden-portrait: Couple centered in garden
+  '/assets/web/reception-garden-portrait.jpg': '52% 25%',
+
+  // 8. wedding-temple-steps: Couple sitting on ancient temple steps
+  '/assets/web/wedding-temple-steps.jpg': '45% 45%',
+
+  // 9. bridal portraits
+  '/assets/web/bridal-beauty-blue-silk-alt.jpg': 'center 10%',
+  '/assets/web/bridal-beauty-blue-silk.jpg': 'center 8%',
+  '/assets/web/bridal-window-portrait.jpg': 'center 25%',
+
+  // 10. candid & outdoor
+  '/assets/web/candid-temple-lawn-wide.jpg': 'center 15%',
+  '/assets/web/candid-flowering-tree-kiss.jpg': '60% 70%',
+  '/assets/web/candid-outdoor-smile.jpg': '62% 40%',
+  '/assets/web/prewedding-beach-kneel.jpg': '75% center',
+  '/assets/web/wedding-metti-ritual.jpg': 'center 50%',
+  '/assets/web/wedding-pillar-rest.jpg': '68% 38%',
+  '/assets/web/wedding-pillar-embrace.jpg': '33% 45%',
+};
+
+export const IMAGE_FOCAL_POINTS = DESKTOP_FOCAL_POINTS;
 
 /**
- * Returns the exact CSS object-position focal point for any photo.
- * Falls back to 'center 15%' for portraits (keeping faces in view) or 'center center' for landscapes.
+ * Returns the exact CSS object-position focal point for any photo on desktop or mobile.
  */
-export function getFocalPoint(url) {
-  if (!url) return 'center 15%';
+export function getFocalPoint(url, isMobile = false) {
+  if (!url) return isMobile ? 'center 20%' : 'center 25%';
   const clean = url.replace(/^[./]+/, '/').split('?')[0];
-  if (IMAGE_FOCAL_POINTS[clean]) return IMAGE_FOCAL_POINTS[clean];
-  if (LANDSCAPE_IMAGES.has(clean)) return 'center center';
-  return 'center 15%';
-}
 
-/**
- * Checks whether an image is naturally landscape.
- */
-export function isLandscape(url) {
-  if (!url) return false;
-  const clean = url.replace(/^[./]+/, '/').split('?')[0];
-  return LANDSCAPE_IMAGES.has(clean);
+  if (isMobile && MOBILE_FOCAL_POINTS[clean]) {
+    return MOBILE_FOCAL_POINTS[clean];
+  }
+
+  if (DESKTOP_FOCAL_POINTS[clean]) {
+    return DESKTOP_FOCAL_POINTS[clean];
+  }
+
+  return isMobile ? 'center 20%' : 'center 25%';
 }

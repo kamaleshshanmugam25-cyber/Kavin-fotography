@@ -289,6 +289,26 @@ export default function Navbar({ onBookClick }) {
               </AnimatePresence>
             </div>
 
+            {/* Process Page Link */}
+            <Link
+              to="/process"
+              className={`px-3 py-1.5 rounded-full hover:bg-black/5 hover:text-black transition-all whitespace-nowrap cursor-pointer ${
+                location.pathname === '/process' ? 'bg-black/10 text-black font-semibold' : ''
+              }`}
+            >
+              Process
+            </Link>
+
+            {/* Perspectives Page Link */}
+            <Link
+              to="/client-perspectives"
+              className={`px-3 py-1.5 rounded-full hover:bg-black/5 hover:text-black transition-all whitespace-nowrap cursor-pointer ${
+                location.pathname === '/client-perspectives' ? 'bg-black/10 text-black font-semibold' : ''
+              }`}
+            >
+              Perspectives
+            </Link>
+
             {/* Contact Page Link */}
             <Link
               to="/contact"
@@ -478,21 +498,33 @@ export default function Navbar({ onBookClick }) {
                   )}
                 </div>
 
-                {/* Process */}
+                {/* Process Page Link */}
                 <button
                   type="button"
-                  onClick={() => handleNavClick('#process')}
-                  className="text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    document.body.style.overflow = '';
+                    navigate('/process');
+                  }}
+                  className={`text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900 ${
+                    location.pathname === '/process' ? 'bg-[#D4AF77]/30 font-bold text-[#4A0715]' : ''
+                  }`}
                 >
                   <span>Our 4-Step Process</span>
                   <ArrowRight className="w-4 h-4 text-[#7A5826]" />
                 </button>
 
-                {/* Reviews */}
+                {/* Client Perspectives Page Link */}
                 <button
                   type="button"
-                  onClick={() => handleNavClick('#reviews')}
-                  className="text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    document.body.style.overflow = '';
+                    navigate('/client-perspectives');
+                  }}
+                  className={`text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900 ${
+                    location.pathname === '/client-perspectives' ? 'bg-[#D4AF77]/30 font-bold text-[#4A0715]' : ''
+                  }`}
                 >
                   <span>Client Perspectives</span>
                   <ArrowRight className="w-4 h-4 text-[#7A5826]" />
