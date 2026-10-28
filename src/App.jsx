@@ -193,7 +193,7 @@ export default function App() {
   return (
     <Router>
       {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
-      <div className="min-h-screen bg-[#2A040C] text-[#1A1A1A] selection:bg-[#C8102E] selection:text-white relative overflow-x-clip w-full max-w-full flex flex-col">
+      <div className="min-h-screen bg-white text-[#111111] selection:bg-[#163BC7] selection:text-white relative overflow-x-clip w-full max-w-full flex flex-col">
         {/* Navigation Bar */}
         <Navbar onBookClick={() => handleOpenBookingModal()} />
 

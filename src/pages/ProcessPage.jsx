@@ -129,9 +129,9 @@ export default function ProcessPage({ onBookClick }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFFDF7] text-[#1A1A1A] selection:bg-[#C8102E] selection:text-white">
+    <div className="min-h-screen bg-white text-[#111111] selection:bg-[#163BC7] selection:text-white">
       {/* 1. Cinematic Hero Banner */}
-      <section className="relative min-h-[75vh] sm:min-h-[85vh] w-full flex flex-col justify-end sm:justify-center items-center overflow-hidden bg-[#2A040C]">
+      <section className="relative min-h-[75vh] sm:min-h-[85vh] w-full flex flex-col justify-end sm:justify-center items-center overflow-hidden bg-[#0B1638]">
         {/* Background Image with Slow Subtle Motion */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <motion.div
@@ -149,10 +149,9 @@ export default function ProcessPage({ onBookClick }) {
             />
           </motion.div>
 
-          {/* Luxury Burgundy & Gold Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#2A040C] via-[#2A040C]/50 via-65% to-transparent sm:to-[#2A040C]/35" />
+          {/* Clean, Neutral Photographic Vignette - Zero blue cast so wedding photos look natural & rich */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 via-45% to-transparent pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent pointer-events-none" />
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[650px] h-[250px] sm:h-[450px] bg-[radial-gradient(ellipse_at_center,_rgba(212,175,119,0.15),_transparent_70%)] rounded-full pointer-events-none" />
         </div>
 
         {/* Hero Content */}
@@ -162,13 +161,13 @@ export default function ProcessPage({ onBookClick }) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#D4AF77] mb-2 sm:mb-3"
+            className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#0787F9] mb-2 sm:mb-3"
           >
             <Link to="/" className="hover:text-white transition-colors">
               Home
             </Link>
-            <span className="text-[#D4AF77]/60">/</span>
-            <span className="text-[#FFFDF7] font-semibold">Our 4-Step Process</span>
+            <span className="text-white/40">/</span>
+            <span className="text-white font-semibold">Our 4-Step Process</span>
           </motion.div>
 
           {/* Badge */}
@@ -176,10 +175,10 @@ export default function ProcessPage({ onBookClick }) {
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#4A0715]/80 border border-[#D4AF77]/40 backdrop-blur-md mb-2 sm:mb-4 shadow-xl"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#0B1638]/80 border border-[#D9DEE8]/30 backdrop-blur-md mb-2 sm:mb-4 shadow-xl"
           >
-            <Sparkles className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#D4AF77] shrink-0" />
-            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.25em] uppercase text-[#F3E9DC] whitespace-nowrap">
+            <Sparkles className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#0787F9] shrink-0" />
+            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.25em] uppercase text-[#F7F9FC] whitespace-nowrap">
               SIGNATURE PHOTOGRAPHY JOURNEY
             </span>
           </motion.div>
@@ -189,7 +188,7 @@ export default function ProcessPage({ onBookClick }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-[#FFFDF7] font-normal tracking-tight leading-tight mb-2 sm:mb-4 max-w-4xl"
+            className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-tight mb-2 sm:mb-4 max-w-4xl"
           >
             Our 4-Step Signature Journey
           </motion.h1>
@@ -199,7 +198,7 @@ export default function ProcessPage({ onBookClick }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="text-xs sm:text-base md:text-lg text-[#F3E9DC]/90 font-light max-w-2xl mx-auto leading-relaxed mb-4 sm:mb-8"
+            className="text-xs sm:text-base md:text-lg text-[#F7F9FC]/90 font-light max-w-2xl mx-auto leading-relaxed mb-4 sm:mb-8"
           >
             From our initial consultation to holding your handcrafted leather heirloom album, our thoughtful 4-step workflow guarantees complete peace of mind, transparent collaboration, and timeless visual artistry.
           </motion.p>
@@ -214,9 +213,9 @@ export default function ProcessPage({ onBookClick }) {
             <button
               type="button"
               onClick={handleBookingCTA}
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full bg-[#D4AF77] hover:bg-[#C29B63] text-[#2A040C] font-semibold text-xs sm:text-sm tracking-[0.15em] uppercase transition-all duration-300 shadow-xl shadow-[#D4AF77]/20 flex items-center justify-center gap-2 cursor-pointer group hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full bg-[#163BC7] hover:bg-[#0B1638] text-white font-semibold text-xs sm:text-sm tracking-[0.15em] uppercase transition-all duration-300 shadow-xl shadow-[#163BC7]/20 flex items-center justify-center gap-2 cursor-pointer group border border-[#163BC7]"
             >
-              <Calendar className="w-4 h-4 text-[#2A040C]" />
+              <Calendar className="w-4 h-4 text-white" />
               <span>Begin Your Journey</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
@@ -227,7 +226,7 @@ export default function ProcessPage({ onBookClick }) {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full bg-white/10 hover:bg-white/20 text-[#FFFDF7] font-medium text-xs sm:text-sm tracking-[0.15em] uppercase transition-all duration-300 backdrop-blur-md border border-white/20 flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium text-xs sm:text-sm tracking-[0.15em] uppercase transition-all duration-300 backdrop-blur-md border border-white/20 flex items-center justify-center gap-2 cursor-pointer"
             >
               <MessageSquare className="w-4 h-4 text-[#25D366]" />
               <span>Direct WhatsApp Chat</span>
@@ -237,7 +236,7 @@ export default function ProcessPage({ onBookClick }) {
       </section>
 
       {/* 2. Overview Quick Roadmap Bar */}
-      <section id="step-roadmap" className="bg-[#4A0715] text-[#FFFDF7] border-y border-[#D4AF77]/30 py-6 sm:py-8 px-4 sm:px-6">
+      <section id="step-roadmap" className="bg-[#0B1638] text-white border-y border-[#D9DEE8]/20 py-6 sm:py-8 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
             {DETAILED_STEPS.map((s, idx) => {
@@ -245,20 +244,20 @@ export default function ProcessPage({ onBookClick }) {
               return (
                 <div
                   key={s.step}
-                  className="flex items-center gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-[#D4AF77]/25 hover:border-[#D4AF77]/70 transition-all hover:bg-white/10 group shadow-sm"
+                  className="flex items-center gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#0787F9]/70 transition-all hover:bg-white/10 group shadow-sm"
                 >
-                  <div className="h-11 w-11 rounded-xl bg-[#D4AF77]/20 border border-[#D4AF77]/40 flex items-center justify-center text-[#D4AF77] shrink-0 group-hover:scale-105 transition-transform shadow-inner">
+                  <div className="h-11 w-11 rounded-xl bg-[#163BC7] border border-[#0787F9]/40 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-inner">
                     <span className="font-serif text-base font-bold">{s.step}</span>
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#D4AF77] font-semibold mb-0.5 line-clamp-1">
+                    <div className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#0787F9] font-semibold mb-0.5 line-clamp-1">
                       {idx === 3 ? '3-5 Days Preview • 3-4 Wks' : s.timeline}
                     </div>
-                    <div className="text-sm font-serif font-medium text-white leading-snug group-hover:text-[#F3E9DC] transition-colors">
+                    <div className="text-sm font-serif font-medium text-white leading-snug group-hover:text-[#F7F9FC] transition-colors">
                       {s.title}
                     </div>
                   </div>
-                  <div className="sm:hidden text-white/40 group-hover:text-[#D4AF77] transition-colors shrink-0">
+                  <div className="sm:hidden text-white/40 group-hover:text-[#0787F9] transition-colors shrink-0">
                     <Icon className="w-4 h-4" />
                   </div>
                 </div>
@@ -271,14 +270,14 @@ export default function ProcessPage({ onBookClick }) {
       {/* 3. Deep-Dive Detailed 4-Step Breakdown */}
       <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F3E9DC] border border-[#D4AF77]/40 text-xs tracking-[0.25em] uppercase text-[#4A0715] font-semibold mb-3 shadow-sm">
-            <BookOpen className="w-3.5 h-3.5 text-[#D4AF77]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#163BC7]/10 border border-[#163BC7]/20 text-xs tracking-[0.25em] uppercase text-[#163BC7] font-semibold mb-3 shadow-sm">
+            <BookOpen className="w-3.5 h-3.5 text-[#0787F9]" />
             <span>Step-by-Step Walkthrough</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl text-gray-900 font-normal tracking-tight mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl text-[#111111] font-normal tracking-tight mb-4">
             How We Document Your Sacred Story
           </h2>
-          <p className="text-gray-600 text-sm sm:text-base font-light leading-relaxed">
+          <p className="text-[#555B68] text-sm sm:text-base font-light leading-relaxed">
             Every celebration receives the highest standard of artistic care, data security, and cultural reverence. Here is what happens at each stage of your partnership with Kanvi Fotography.
           </p>
         </div>
@@ -295,53 +294,53 @@ export default function ProcessPage({ onBookClick }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className={`p-5 sm:p-8 lg:p-12 rounded-3xl bg-[#F3E9DC]/60 border border-[#D4AF77]/40 shadow-xl relative overflow-hidden flex flex-col ${
+                className={`p-5 sm:p-8 lg:p-12 rounded-3xl bg-[#F7F9FC] border border-[#D9DEE8] shadow-sm relative overflow-hidden flex flex-col ${
                   isEven ? 'lg:flex-row-reverse' : 'lg:flex-row'
                 } gap-6 sm:gap-8 lg:gap-12 items-center`}
               >
                 {/* Visual / Left Side */}
                 <div className="w-full lg:w-5/12 flex flex-col justify-between">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="font-serif text-5xl sm:text-6xl font-light text-[#4A0715]">
+                    <span className="font-serif text-5xl sm:text-6xl font-light text-[#163BC7]">
                       {step.step}
                     </span>
-                    <div className="h-12 w-12 rounded-2xl bg-[#4A0715] text-[#D4AF77] border border-[#D4AF77]/50 flex items-center justify-center shadow-md">
+                    <div className="h-12 w-12 rounded-2xl bg-[#163BC7] text-white border border-[#163BC7] flex items-center justify-center shadow-md">
                       <Icon className="w-6 h-6" />
                     </div>
                   </div>
 
-                  <div className="text-xs font-bold uppercase tracking-[0.25em] text-[#C8102E] mb-1">
+                  <div className="text-xs font-bold uppercase tracking-[0.25em] text-[#163BC7] mb-1">
                     {step.subtitle}
                   </div>
-                  <h3 className="font-serif text-2xl sm:text-3xl text-gray-900 font-normal mb-3">
+                  <h3 className="font-serif text-2xl sm:text-3xl text-[#111111] font-normal mb-3">
                     {step.title}
                   </h3>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-[#D4AF77]/30 text-xs font-semibold text-[#7A5826] mb-6 w-fit">
-                    <Clock className="w-3.5 h-3.5 text-[#C8102E]" />
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#D9DEE8] text-xs font-semibold text-[#555B68] mb-6 w-fit shadow-xs">
+                    <Clock className="w-3.5 h-3.5 text-[#163BC7]" />
                     <span>Timeline: {step.timeline}</span>
                   </div>
 
                   {/* Philosophy Quote */}
-                  <div className="p-4 rounded-xl bg-white/70 border-l-4 border-[#D4AF77] text-xs sm:text-sm font-serif italic text-gray-700">
+                  <div className="p-4 rounded-xl bg-white border-l-4 border-[#163BC7] text-xs sm:text-sm font-serif italic text-[#555B68] shadow-xs">
                     "{step.quote}"
                   </div>
                 </div>
 
                 {/* Details / Right Side */}
                 <div className="w-full lg:w-7/12 space-y-6">
-                  <p className="text-gray-700 text-sm sm:text-base leading-relaxed font-light">
+                  <p className="text-[#555B68] text-sm sm:text-base leading-relaxed font-light">
                     {step.description}
                   </p>
 
                   {/* Key Execution Points */}
                   <div className="space-y-2.5">
-                    <h4 className="text-xs uppercase tracking-wider font-bold text-gray-900">
+                    <h4 className="text-xs uppercase tracking-wider font-bold text-[#111111]">
                       Key Objectives &amp; Focus:
                     </h4>
                     <div className="space-y-2">
                       {step.keyPoints.map((point, i) => (
-                        <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-600">
-                          <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
+                        <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#555B68]">
+                          <CheckCircle2 className="w-4 h-4 text-[#163BC7] shrink-0 mt-0.5" />
                           <span>{point}</span>
                         </div>
                       ))}
@@ -349,16 +348,16 @@ export default function ProcessPage({ onBookClick }) {
                   </div>
 
                   {/* Deliverables Box */}
-                  <div className="pt-4 border-t border-[#D4AF77]/30">
-                    <div className="text-[11px] uppercase tracking-wider font-bold text-[#4A0715] mb-2 flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-[#D4AF77]" />
+                  <div className="pt-4 border-t border-[#D9DEE8]">
+                    <div className="text-[11px] uppercase tracking-wider font-bold text-[#163BC7] mb-2 flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-[#0787F9]" />
                       <span>Stage Deliverables:</span>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {step.deliverables.map((item, dIdx) => (
                         <span
                           key={dIdx}
-                          className="px-3 py-1 rounded-lg bg-white border border-[#D4AF77]/40 text-xs font-medium text-gray-800 shadow-sm"
+                          className="px-3 py-1 rounded-lg bg-white border border-[#D9DEE8] text-xs font-medium text-[#111111] shadow-xs"
                         >
                           {item}
                         </span>
@@ -373,50 +372,50 @@ export default function ProcessPage({ onBookClick }) {
       </section>
 
       {/* 4. Equipment & Standards Guarantees */}
-      <section className="py-16 sm:py-24 bg-[#2A040C] text-[#FFFDF7] px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-24 bg-[#0B1638] text-white px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#4A0715] border border-[#D4AF77]/40 text-xs tracking-[0.25em] uppercase text-[#D4AF77] font-semibold mb-3">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#D4AF77]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs tracking-[0.25em] uppercase text-[#0787F9] font-semibold mb-3">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#0787F9]" />
               <span>Uncompromising Quality</span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl font-normal text-white mb-3">
               The Kanvi Standards of Excellence
             </h2>
-            <p className="text-[#F3E9DC]/80 text-xs sm:text-sm font-light">
+            <p className="text-[#D9DEE8] text-xs sm:text-sm font-light">
               We hold every ceremony to rigorous standards of professionalism, technical mastery, and data security.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl bg-white/5 border border-[#D4AF77]/25 hover:border-[#D4AF77] transition-colors">
-              <HardDrive className="w-7 h-7 text-[#D4AF77] mb-4" />
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#0787F9] transition-colors">
+              <HardDrive className="w-7 h-7 text-[#0787F9] mb-4" />
               <h3 className="font-serif text-lg font-semibold text-white mb-2">Dual-Slot Redundancy</h3>
-              <p className="text-xs text-[#F3E9DC]/80 leading-relaxed font-light">
+              <p className="text-xs text-[#D9DEE8] leading-relaxed font-light">
                 All camera bodies record simultaneously to dual memory cards. Immediate on-site backup prevents any risk of card corruption.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white/5 border border-[#D4AF77]/25 hover:border-[#D4AF77] transition-colors">
-              <Camera className="w-7 h-7 text-[#D4AF77] mb-4" />
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#0787F9] transition-colors">
+              <Camera className="w-7 h-7 text-[#0787F9] mb-4" />
               <h3 className="font-serif text-lg font-semibold text-white mb-2">Sony Cinema Optics</h3>
-              <p className="text-xs text-[#F3E9DC]/80 leading-relaxed font-light">
+              <p className="text-xs text-[#D9DEE8] leading-relaxed font-light">
                 Full-frame high-resolution sensors and prime G-Master lenses deliver rich 10-bit color, buttery bokeh, and extreme low-light clarity.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white/5 border border-[#D4AF77]/25 hover:border-[#D4AF77] transition-colors">
-              <Clock className="w-7 h-7 text-[#D4AF77] mb-4" />
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#0787F9] transition-colors">
+              <Clock className="w-7 h-7 text-[#0787F9] mb-4" />
               <h3 className="font-serif text-lg font-semibold text-white mb-2">Punctual &amp; Prepared</h3>
-              <p className="text-xs text-[#F3E9DC]/80 leading-relaxed font-light">
+              <p className="text-xs text-[#D9DEE8] leading-relaxed font-light">
                 Our crew arrives 30 minutes before schedule to test lighting, scout angles, and calibrate equipment before the first ritual begins.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white/5 border border-[#D4AF77]/25 hover:border-[#D4AF77] transition-colors">
-              <Award className="w-7 h-7 text-[#D4AF77] mb-4" />
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#0787F9] transition-colors">
+              <Award className="w-7 h-7 text-[#0787F9] mb-4" />
               <h3 className="font-serif text-lg font-semibold text-white mb-2">Lifetime Heirloom Binding</h3>
-              <p className="text-xs text-[#F3E9DC]/80 leading-relaxed font-light">
+              <p className="text-xs text-[#D9DEE8] leading-relaxed font-light">
                 Our physical flush-mount albums use archival Fuji Crystal paper and Italian leather covers, backed by a lifetime binding warranty.
               </p>
             </div>
@@ -427,14 +426,14 @@ export default function ProcessPage({ onBookClick }) {
       {/* 5. Frequently Asked Questions Accordion */}
       <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F3E9DC] border border-[#D4AF77]/40 text-xs tracking-[0.25em] uppercase text-[#4A0715] font-semibold mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-[#D4AF77]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#163BC7]/10 border border-[#163BC7]/20 text-xs tracking-[0.25em] uppercase text-[#163BC7] font-semibold mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-[#0787F9]" />
             <span>Clear Answers</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl text-gray-900 font-normal mb-3">
+          <h2 className="font-serif text-3xl sm:text-4xl text-[#111111] font-normal mb-3">
             Questions About Our Process
           </h2>
-          <p className="text-gray-600 text-sm font-light">
+          <p className="text-[#555B68] text-sm font-light">
             Everything you need to know about planning, booking, and receiving your wedding collection.
           </p>
         </div>
@@ -445,24 +444,24 @@ export default function ProcessPage({ onBookClick }) {
             return (
               <div
                 key={index}
-                className="rounded-2xl border border-[#D4AF77]/35 bg-white overflow-hidden shadow-sm transition-all"
+                className="rounded-2xl border border-[#D9DEE8] bg-[#F7F9FC] overflow-hidden shadow-sm transition-all"
               >
                 <button
                   type="button"
                   onClick={() => toggleFaq(index)}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-[#F3E9DC]/30 transition-colors"
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-white transition-colors"
                 >
-                  <span className="font-serif text-base sm:text-lg text-gray-900 font-medium">
+                  <span className="font-serif text-base sm:text-lg text-[#111111] font-medium">
                     {faq.q}
                   </span>
                   <ChevronDown
-                    className={`w-5 h-5 text-[#4A0715] transition-transform duration-300 shrink-0 ${
-                      isOpen ? 'rotate-180 text-[#C8102E]' : ''
+                    className={`w-5 h-5 text-[#163BC7] transition-transform duration-300 shrink-0 ${
+                      isOpen ? 'rotate-180 text-[#0787F9]' : ''
                     }`}
                   />
                 </button>
                 {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 text-gray-600 text-xs sm:text-sm leading-relaxed font-light border-t border-[#F3E9DC]">
+                  <div className="px-5 sm:px-6 pb-6 text-[#555B68] text-xs sm:text-sm leading-relaxed font-light border-t border-[#D9DEE8]">
                     {faq.a}
                   </div>
                 )}
@@ -473,32 +472,32 @@ export default function ProcessPage({ onBookClick }) {
       </section>
 
       {/* 6. Bottom Final Booking CTA */}
-      <section className="py-16 sm:py-24 bg-gradient-to-b from-[#FFFDF7] to-[#F3E9DC] border-t border-[#D4AF77]/30 px-4 text-center">
+      <section className="py-16 sm:py-24 bg-[#F7F9FC] border-t border-[#D9DEE8] px-4 text-center">
         <div className="max-w-3xl mx-auto space-y-6">
-          <div className="h-14 w-14 rounded-full bg-[#4A0715] text-[#D4AF77] border border-[#D4AF77]/40 flex items-center justify-center mx-auto shadow-lg">
-            <Calendar className="w-6 h-6 text-[#D4AF77]" />
+          <div className="h-14 w-14 rounded-full bg-[#163BC7] text-white flex items-center justify-center mx-auto shadow-md">
+            <Calendar className="w-6 h-6 text-white" />
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl text-gray-900 font-normal">
+          <h2 className="font-serif text-3xl sm:text-4xl text-[#111111] font-normal">
             Ready to Begin Your Sacred Journey?
           </h2>
-          <p className="text-gray-600 text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed">
+          <p className="text-[#555B68] text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed">
             Reserve your wedding or celebration date with Kanvi Fotography. Experience warm guidance, bespoke planning, and cinematic excellence.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <button
               type="button"
               onClick={handleBookingCTA}
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#4A0715] hover:bg-[#C8102E] text-white font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase transition-all duration-300 shadow-xl shadow-[#4A0715]/20 flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#163BC7] hover:bg-[#0B1638] text-white font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase transition-all duration-300 shadow-xl shadow-[#163BC7]/20 flex items-center justify-center gap-2 cursor-pointer border border-[#163BC7]"
             >
-              <Calendar className="w-4 h-4 text-[#D4AF77]" />
+              <Calendar className="w-4 h-4 text-white" />
               <span>Reserve Your Date (Book Now)</span>
             </button>
             <Link
               to="/client-perspectives"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white hover:bg-white/80 text-gray-900 font-semibold text-xs sm:text-sm tracking-[0.15em] uppercase transition-all duration-300 border border-[#D4AF77]/50 shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white hover:bg-[#F7F9FC] text-[#163BC7] font-semibold text-xs sm:text-sm tracking-[0.15em] uppercase transition-all duration-300 border border-[#163BC7] shadow-sm flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Read Client Perspectives</span>
-              <ArrowRight className="w-4 h-4 text-[#7A5826]" />
+              <ArrowRight className="w-4 h-4 text-[#163BC7]" />
             </Link>
           </div>
         </div>

@@ -28,7 +28,18 @@ export default function Navbar({ onBookClick }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [desktopDropdown, setDesktopDropdown] = useState(null); // 'weddings' | 'outdoor' | null
   const [mobileExpandedSection, setMobileExpandedSection] = useState(null); // 'weddings' | 'outdoor' | null
+  const [isScrolled, setIsScrolled] = useState(false);
   const dropdownTimeoutRef = useRef(null);
+
+  // Track scroll position to enhance glassmorphic depth dynamically
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 15);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Close mobile menu on Escape key
   useEffect(() => {
@@ -119,15 +130,21 @@ export default function Navbar({ onBookClick }) {
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-2.5 sm:top-5 inset-x-0 mx-auto w-[92%] sm:w-[94%] max-w-5xl xl:max-w-6xl z-[85] pointer-events-auto transform-gpu will-change-transform"
       >
-        <div className="bg-[#E7E2D8]/95 backdrop-blur-md border border-[#D4AF77]/40 rounded-full px-3 sm:px-5 py-1.5 sm:py-2.5 shadow-xl shadow-black/15 flex items-center justify-between gap-2 sm:gap-3 text-gray-900 transition-all duration-300">
+        <div
+          className={`rounded-full px-3 sm:px-5 py-1.5 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-3 text-[#111111] transition-all duration-300 backdrop-blur-xl sm:backdrop-blur-2xl border ${
+            isScrolled
+              ? 'bg-white/80 border-white/80 shadow-[0_12px_36px_rgba(0,0,0,0.1),inset_0_1px_1px_rgba(255,255,255,0.95)]'
+              : 'bg-white/65 border-white/70 shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_1px_1px_rgba(255,255,255,0.95)]'
+          }`}
+        >
           {/* Brand Logo & Studio Name (Left) */}
           <a
             href="/"
             onClick={handleLogoClick}
-            className="flex items-center gap-2 sm:gap-2.5 group focus:outline-none focus:ring-2 focus:ring-[#D4AF77] rounded-full p-0.5 shrink-0"
+            className="flex items-center gap-2 sm:gap-2.5 group focus:outline-none focus:ring-2 focus:ring-[#163BC7] rounded-full p-0.5 shrink-0"
             aria-label="Kanvi Fotography Home"
           >
-            <div className="h-7 w-7 sm:h-9 sm:w-9 rounded-full overflow-hidden bg-white/90 border border-[#D4AF77]/40 flex items-center justify-center p-0.5 shadow-sm shrink-0 group-hover:border-[#C8102E] transition-colors">
+            <div className="h-7 w-7 sm:h-9 sm:w-9 rounded-full overflow-hidden bg-white/90 border border-white/80 flex items-center justify-center p-0.5 shadow-2xs shrink-0 group-hover:border-[#163BC7] transition-colors">
               <img
                 src={STUDIO_INFO.assets.logoMark}
                 alt="Kanvi Fotography Logo"
@@ -138,17 +155,17 @@ export default function Navbar({ onBookClick }) {
               />
             </div>
             <div className="flex flex-col text-left">
-              <span className="font-serif font-bold text-sm sm:text-base tracking-[0.18em] uppercase text-gray-900 group-hover:text-[#4A0715] transition-colors leading-tight">
+              <span className="font-serif font-bold text-sm sm:text-base tracking-[0.18em] uppercase text-[#111111] group-hover:text-[#163BC7] transition-colors leading-tight">
                 KANVI
               </span>
-              <span className="text-[8px] sm:text-[9px] tracking-[0.3em] uppercase text-[#7A5826] font-semibold -mt-0.5">
+              <span className="text-[8px] sm:text-[9px] tracking-[0.3em] uppercase text-[#163BC7] font-semibold -mt-0.5">
                 FOTOGRAPHY
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-xs xl:text-sm font-medium text-gray-700">
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-xs xl:text-sm font-medium text-[#555B68]">
             {/* Home */}
             <a
               href="/"
@@ -156,7 +173,9 @@ export default function Navbar({ onBookClick }) {
                 e.preventDefault();
                 handleNavClick('#hero');
               }}
-              className="px-3 py-1.5 rounded-full hover:bg-black/5 hover:text-black transition-all whitespace-nowrap cursor-pointer"
+              className={`px-3 py-1.5 rounded-full hover:bg-white/70 hover:text-[#163BC7] hover:shadow-2xs transition-all whitespace-nowrap cursor-pointer ${
+                isHomePage && !location.hash ? 'bg-[#163BC7]/10 text-[#163BC7] font-semibold border border-[#163BC7]/15' : ''
+              }`}
             >
               Home
             </a>
@@ -164,8 +183,8 @@ export default function Navbar({ onBookClick }) {
             {/* About Page Link */}
             <Link
               to="/about"
-              className={`px-3 py-1.5 rounded-full hover:bg-black/5 hover:text-black transition-all whitespace-nowrap cursor-pointer ${
-                location.pathname === '/about' ? 'bg-black/10 text-black font-semibold' : ''
+              className={`px-3 py-1.5 rounded-full hover:bg-white/70 hover:text-[#163BC7] hover:shadow-2xs transition-all whitespace-nowrap cursor-pointer ${
+                location.pathname === '/about' ? 'bg-[#163BC7]/10 text-[#163BC7] font-semibold border border-[#163BC7]/15' : ''
               }`}
             >
               About
@@ -180,13 +199,13 @@ export default function Navbar({ onBookClick }) {
               <button
                 type="button"
                 onClick={() => handleNavClick('#services')}
-                className="px-3 py-1.5 rounded-full hover:bg-black/5 hover:text-black transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap"
+                className="px-3 py-1.5 rounded-full hover:bg-white/70 hover:text-[#163BC7] hover:shadow-2xs transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap text-[#555B68]"
                 aria-expanded={desktopDropdown === 'weddings'}
               >
                 <span>Weddings</span>
                 <ChevronDown
-                  className={`w-3.5 h-3.5 text-gray-500 transition-transform duration-200 shrink-0 ${
-                    desktopDropdown === 'weddings' ? 'rotate-180 text-black' : ''
+                  className={`w-3.5 h-3.5 text-[#555B68] transition-transform duration-200 shrink-0 ${
+                    desktopDropdown === 'weddings' ? 'rotate-180 text-[#163BC7]' : ''
                   }`}
                 />
               </button>
@@ -199,30 +218,30 @@ export default function Navbar({ onBookClick }) {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.98 }}
                     transition={{ duration: 0.18 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-[#D4AF77]/35 py-2.5 z-50 overflow-hidden"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-white/85 backdrop-blur-2xl rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.12),inset_0_1px_1px_rgba(255,255,255,0.95)] border border-white/80 py-2.5 z-50 overflow-hidden"
                   >
-                    <div className="px-3.5 py-1 mb-1 border-b border-gray-100 flex items-center justify-between">
-                      <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-[#C8102E]">
+                    <div className="px-3.5 py-1 mb-1 border-b border-[#D9DEE8] flex items-center justify-between">
+                      <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-[#163BC7]">
                         Wedding Specialties
                       </span>
-                      <Sparkles className="w-3.5 h-3.5 text-[#D4AF77]" />
+                      <Sparkles className="w-3.5 h-3.5 text-[#0787F9]" />
                     </div>
                     {WEDDINGS_MENU.map((item) => (
                       <button
                         key={item.id}
                         type="button"
                         onClick={() => handleServiceSelect(item.id)}
-                        className="w-full text-left px-3.5 py-2 hover:bg-[#F3E9DC]/60 transition-colors flex items-center justify-between group cursor-pointer"
+                        className="w-full text-left px-3.5 py-2 hover:bg-white/70 transition-colors flex items-center justify-between group cursor-pointer"
                       >
                         <div>
-                          <div className="text-xs font-semibold text-gray-900 group-hover:text-[#4A0715]">
+                          <div className="text-xs font-semibold text-[#111111] group-hover:text-[#163BC7]">
                             {item.title}
                           </div>
-                          <div className="text-[10px] text-gray-500 font-light">
+                          <div className="text-[10px] text-[#555B68] font-light">
                             {item.subtitle}
                           </div>
                         </div>
-                        <ChevronRight className="w-3.5 h-3.5 text-[#D4AF77] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                        <ChevronRight className="w-3.5 h-3.5 text-[#163BC7] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                       </button>
                     ))}
                   </motion.div>
@@ -239,13 +258,13 @@ export default function Navbar({ onBookClick }) {
               <button
                 type="button"
                 onClick={() => handleNavClick('#services')}
-                className="px-3 py-1.5 rounded-full hover:bg-black/5 hover:text-black transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap"
+                className="px-3 py-1.5 rounded-full hover:bg-white/70 hover:text-[#163BC7] hover:shadow-2xs transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap text-[#555B68]"
                 aria-expanded={desktopDropdown === 'outdoor'}
               >
                 <span>Outdoor</span>
                 <ChevronDown
-                  className={`w-3.5 h-3.5 text-gray-500 transition-transform duration-200 shrink-0 ${
-                    desktopDropdown === 'outdoor' ? 'rotate-180 text-black' : ''
+                  className={`w-3.5 h-3.5 text-[#555B68] transition-transform duration-200 shrink-0 ${
+                    desktopDropdown === 'outdoor' ? 'rotate-180 text-[#163BC7]' : ''
                   }`}
                 />
               </button>
@@ -258,30 +277,30 @@ export default function Navbar({ onBookClick }) {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.98 }}
                     transition={{ duration: 0.18 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-68 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-[#D4AF77]/35 py-2.5 z-50 overflow-hidden"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-68 bg-white/85 backdrop-blur-2xl rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.12),inset_0_1px_1px_rgba(255,255,255,0.95)] border border-white/80 py-2.5 z-50 overflow-hidden"
                   >
-                    <div className="px-3.5 py-1 mb-1 border-b border-gray-100 flex items-center justify-between">
-                      <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-[#C8102E]">
+                    <div className="px-3.5 py-1 mb-1 border-b border-[#D9DEE8] flex items-center justify-between">
+                      <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-[#163BC7]">
                         Outdoor &amp; Celebrations
                       </span>
-                      <Images className="w-3.5 h-3.5 text-gray-400" />
+                      <Images className="w-3.5 h-3.5 text-[#0787F9]" />
                     </div>
                     {OUTDOOR_MENU.map((item) => (
                       <button
                         key={item.id}
                         type="button"
                         onClick={() => handleServiceSelect(item.id)}
-                        className="w-full text-left px-3.5 py-2 hover:bg-[#F3E9DC]/60 transition-colors flex items-center justify-between group cursor-pointer"
+                        className="w-full text-left px-3.5 py-2 hover:bg-white/70 transition-colors flex items-center justify-between group cursor-pointer"
                       >
                         <div>
-                          <div className="text-xs font-semibold text-gray-900 group-hover:text-[#4A0715]">
+                          <div className="text-xs font-semibold text-[#111111] group-hover:text-[#163BC7]">
                             {item.title}
                           </div>
-                          <div className="text-[10px] text-gray-500 font-light">
+                          <div className="text-[10px] text-[#555B68] font-light">
                             {item.subtitle}
                           </div>
                         </div>
-                        <ChevronRight className="w-3.5 h-3.5 text-[#D4AF77] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                        <ChevronRight className="w-3.5 h-3.5 text-[#163BC7] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                       </button>
                     ))}
                   </motion.div>
@@ -292,8 +311,8 @@ export default function Navbar({ onBookClick }) {
             {/* Process Page Link */}
             <Link
               to="/process"
-              className={`px-3 py-1.5 rounded-full hover:bg-black/5 hover:text-black transition-all whitespace-nowrap cursor-pointer ${
-                location.pathname === '/process' ? 'bg-black/10 text-black font-semibold' : ''
+              className={`px-3 py-1.5 rounded-full hover:bg-white/70 hover:text-[#163BC7] hover:shadow-2xs transition-all whitespace-nowrap cursor-pointer ${
+                location.pathname === '/process' ? 'bg-[#163BC7]/10 text-[#163BC7] font-semibold border border-[#163BC7]/15' : ''
               }`}
             >
               Process
@@ -302,8 +321,8 @@ export default function Navbar({ onBookClick }) {
             {/* Perspectives Page Link */}
             <Link
               to="/client-perspectives"
-              className={`px-3 py-1.5 rounded-full hover:bg-black/5 hover:text-black transition-all whitespace-nowrap cursor-pointer ${
-                location.pathname === '/client-perspectives' ? 'bg-black/10 text-black font-semibold' : ''
+              className={`px-3 py-1.5 rounded-full hover:bg-white/70 hover:text-[#163BC7] hover:shadow-2xs transition-all whitespace-nowrap cursor-pointer ${
+                location.pathname === '/client-perspectives' ? 'bg-[#163BC7]/10 text-[#163BC7] font-semibold border border-[#163BC7]/15' : ''
               }`}
             >
               Perspectives
@@ -312,8 +331,8 @@ export default function Navbar({ onBookClick }) {
             {/* Contact Page Link */}
             <Link
               to="/contact"
-              className={`px-3 py-1.5 rounded-full hover:bg-black/5 hover:text-black transition-all whitespace-nowrap cursor-pointer ${
-                location.pathname === '/contact' ? 'bg-black/10 text-black font-semibold' : ''
+              className={`px-3 py-1.5 rounded-full hover:bg-white/70 hover:text-[#163BC7] hover:shadow-2xs transition-all whitespace-nowrap cursor-pointer ${
+                location.pathname === '/contact' ? 'bg-[#163BC7]/10 text-[#163BC7] font-semibold border border-[#163BC7]/15' : ''
               }`}
             >
               Contact
@@ -322,20 +341,20 @@ export default function Navbar({ onBookClick }) {
 
           {/* Right Section: Compact on mobile, spacious on desktop */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            {/* CTA Button */}
+            {/* Royal Blue Book Now Button */}
             <button
               type="button"
               onClick={handleBookingCTA}
-              className={`text-gray-900 font-semibold text-xs sm:text-[13px] px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-sm hover:shadow-md flex items-center gap-1.5 sm:gap-2.5 border transition-all duration-200 cursor-pointer group shrink-0 active:scale-[0.98] ${
+              className={`font-semibold text-xs sm:text-[13px] px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-md flex items-center gap-1.5 sm:gap-2.5 transition-all duration-200 cursor-pointer group shrink-0 active:scale-[0.98] ${
                 location.pathname === '/booking'
-                  ? 'bg-[#F3E9DC] border-[#D4AF77] ring-2 ring-[#D4AF77]/50 text-black font-bold'
-                  : 'bg-white hover:bg-white/90 border-black/5 hover:border-[#D4AF77]/40'
+                  ? 'bg-[#0B1638] text-white ring-2 ring-[#0787F9] shadow-[#163BC7]/30 font-bold'
+                  : 'bg-[#163BC7] hover:bg-[#0B1638] text-white shadow-[#163BC7]/25'
               }`}
               title="Book your wedding or celebration with Kanvi Fotography"
             >
               {/* Fine-Art Camera Badge */}
-              <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br from-[#F3E9DC] via-[#D4AF77] to-[#B3874B] border border-[#D4AF77]/60 flex items-center justify-center shadow-sm shrink-0 group-hover:scale-110 transition-transform">
-                <Camera className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#2A040C]" />
+              <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/20 flex items-center justify-center shadow-sm shrink-0 group-hover:scale-110 transition-transform">
+                <Camera className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
               </div>
               <span className="hidden sm:inline whitespace-nowrap">Book Your Event</span>
               <span className="sm:hidden text-[11px] font-bold whitespace-nowrap">Book</span>
@@ -345,8 +364,8 @@ export default function Navbar({ onBookClick }) {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`lg:hidden p-1.5 sm:p-2 rounded-full text-gray-800 transition-colors cursor-pointer border border-black/10 flex items-center justify-center active:scale-95 ${
-                mobileMenuOpen ? 'bg-black/10 text-black' : 'hover:bg-black/5'
+              className={`lg:hidden p-1.5 sm:p-2 rounded-full text-[#111111] transition-colors cursor-pointer border border-white/80 flex items-center justify-center active:scale-95 ${
+                mobileMenuOpen ? 'bg-[#163BC7]/10 text-[#163BC7]' : 'bg-white/50 hover:bg-white/80'
               }`}
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
@@ -368,7 +387,7 @@ export default function Navbar({ onBookClick }) {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="lg:hidden fixed inset-0 bg-black/60 z-[75]"
+              className="lg:hidden fixed inset-0 bg-[#0B1638]/60 backdrop-blur-sm z-[75]"
               aria-hidden="true"
             />
 
@@ -378,13 +397,13 @@ export default function Navbar({ onBookClick }) {
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.15, ease: 'easeOut' }}
               data-lenis-prevent
-              className="lg:hidden fixed top-[62px] sm:top-[74px] left-3.5 right-3.5 sm:left-6 sm:right-6 mx-auto max-w-lg bg-[#EAE5DC] rounded-3xl border border-[#D4AF77]/40 shadow-2xl p-5 z-[80] max-h-[82vh] overflow-y-auto"
+              className="lg:hidden fixed top-[62px] sm:top-[74px] left-3.5 right-3.5 sm:left-6 sm:right-6 mx-auto max-w-lg bg-white/90 backdrop-blur-2xl rounded-3xl border border-white/80 shadow-[0_25px_50px_rgba(0,0,0,0.15),inset_0_1px_1px_rgba(255,255,255,0.95)] p-5 z-[80] max-h-[82vh] overflow-y-auto"
               style={{ overscrollBehavior: 'contain', WebkitOverflowScrolling: 'touch' }}
               role="dialog"
               aria-modal="true"
             >
               <div className="flex flex-col space-y-1.5">
-                <div className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#7A5826] px-3 pb-1">
+                <div className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#163BC7] px-3 pb-1">
                   Navigation &amp; Services
                 </div>
 
@@ -392,10 +411,10 @@ export default function Navbar({ onBookClick }) {
                 <button
                   type="button"
                   onClick={() => handleNavClick('#hero')}
-                  className="text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900"
+                  className="text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-[#F7F9FC] transition-colors flex items-center justify-between text-left cursor-pointer text-[#111111]"
                 >
                   <span>Home</span>
-                  <ArrowRight className="w-4 h-4 text-[#7A5826]" />
+                  <ArrowRight className="w-4 h-4 text-[#163BC7]" />
                 </button>
 
                 {/* About Page Link */}
@@ -406,16 +425,16 @@ export default function Navbar({ onBookClick }) {
                     document.body.style.overflow = '';
                     navigate('/about');
                   }}
-                  className={`text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900 ${
-                    location.pathname === '/about' ? 'bg-[#D4AF77]/30 font-bold text-[#4A0715]' : ''
+                  className={`text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-[#F7F9FC] transition-colors flex items-center justify-between text-left cursor-pointer text-[#111111] ${
+                    location.pathname === '/about' ? 'bg-[#163BC7]/10 font-bold text-[#163BC7]' : ''
                   }`}
                 >
                   <span>About Founder &amp; Vision</span>
-                  <ArrowRight className="w-4 h-4 text-[#7A5826]" />
+                  <ArrowRight className="w-4 h-4 text-[#163BC7]" />
                 </button>
 
                 {/* Weddings Accordion */}
-                <div className="rounded-xl border border-[#D4AF77]/30 overflow-hidden bg-white/40">
+                <div className="rounded-xl border border-[#D9DEE8] overflow-hidden bg-[#F7F9FC]">
                   <button
                     type="button"
                     onClick={() =>
@@ -423,33 +442,33 @@ export default function Navbar({ onBookClick }) {
                         mobileExpandedSection === 'weddings' ? null : 'weddings'
                       )
                     }
-                    className="w-full text-base font-serif tracking-wide px-3.5 py-2.5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900"
+                    className="w-full text-base font-serif tracking-wide px-3.5 py-2.5 transition-colors flex items-center justify-between text-left cursor-pointer text-[#111111]"
                   >
                     <span className="flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-[#C8102E]" />
+                      <Sparkles className="w-4 h-4 text-[#0787F9]" />
                       <span>Weddings ({WEDDINGS_MENU.length} Services)</span>
                     </span>
                     <ChevronDown
-                      className={`w-4 h-4 text-gray-600 transition-transform duration-200 ${
+                      className={`w-4 h-4 text-[#555B68] transition-transform duration-200 ${
                         mobileExpandedSection === 'weddings' ? 'rotate-180' : ''
                       }`}
                     />
                   </button>
 
                   {mobileExpandedSection === 'weddings' && (
-                    <div className="p-2 space-y-1 bg-white/80 border-t border-[#D4AF77]/20">
+                    <div className="p-2 space-y-1 bg-white border-t border-[#D9DEE8]">
                       {WEDDINGS_MENU.map((item) => (
                         <button
                           key={item.id}
                           type="button"
                           onClick={() => handleServiceSelect(item.id)}
-                          className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center justify-between hover:bg-[#F3E9DC]/60 transition-colors text-gray-800 cursor-pointer"
+                          className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center justify-between hover:bg-[#F7F9FC] transition-colors text-[#555B68] cursor-pointer"
                         >
                           <div>
-                            <div className="font-semibold text-gray-900">{item.title}</div>
-                            <div className="text-[10px] text-gray-500 font-light">{item.subtitle}</div>
+                            <div className="font-semibold text-[#111111]">{item.title}</div>
+                            <div className="text-[10px] text-[#555B68] font-light">{item.subtitle}</div>
                           </div>
-                          <Images className="w-3.5 h-3.5 text-[#D4AF77] shrink-0" />
+                          <Images className="w-3.5 h-3.5 text-[#163BC7] shrink-0" />
                         </button>
                       ))}
                     </div>
@@ -457,7 +476,7 @@ export default function Navbar({ onBookClick }) {
                 </div>
 
                 {/* Outdoor Accordion */}
-                <div className="rounded-xl border border-[#D4AF77]/30 overflow-hidden bg-white/40">
+                <div className="rounded-xl border border-[#D9DEE8] overflow-hidden bg-[#F7F9FC]">
                   <button
                     type="button"
                     onClick={() =>
@@ -465,33 +484,33 @@ export default function Navbar({ onBookClick }) {
                         mobileExpandedSection === 'outdoor' ? null : 'outdoor'
                       )
                     }
-                    className="w-full text-base font-serif tracking-wide px-3.5 py-2.5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900"
+                    className="w-full text-base font-serif tracking-wide px-3.5 py-2.5 transition-colors flex items-center justify-between text-left cursor-pointer text-[#111111]"
                   >
                     <span className="flex items-center gap-2">
-                      <Images className="w-4 h-4 text-[#C8102E]" />
+                      <Images className="w-4 h-4 text-[#0787F9]" />
                       <span>Outdoor &amp; Celebrations</span>
                     </span>
                     <ChevronDown
-                      className={`w-4 h-4 text-gray-600 transition-transform duration-200 ${
+                      className={`w-4 h-4 text-[#555B68] transition-transform duration-200 ${
                         mobileExpandedSection === 'outdoor' ? 'rotate-180' : ''
                       }`}
                     />
                   </button>
 
                   {mobileExpandedSection === 'outdoor' && (
-                    <div className="p-2 space-y-1 bg-white/80 border-t border-[#D4AF77]/20">
+                    <div className="p-2 space-y-1 bg-white border-t border-[#D9DEE8]">
                       {OUTDOOR_MENU.map((item) => (
                         <button
                           key={item.id}
                           type="button"
                           onClick={() => handleServiceSelect(item.id)}
-                          className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center justify-between hover:bg-[#F3E9DC]/60 transition-colors text-gray-800 cursor-pointer"
+                          className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center justify-between hover:bg-[#F7F9FC] transition-colors text-[#555B68] cursor-pointer"
                         >
                           <div>
-                            <div className="font-semibold text-gray-900">{item.title}</div>
-                            <div className="text-[10px] text-gray-500 font-light">{item.subtitle}</div>
+                            <div className="font-semibold text-[#111111]">{item.title}</div>
+                            <div className="text-[10px] text-[#555B68] font-light">{item.subtitle}</div>
                           </div>
-                          <Images className="w-3.5 h-3.5 text-[#D4AF77] shrink-0" />
+                          <Images className="w-3.5 h-3.5 text-[#163BC7] shrink-0" />
                         </button>
                       ))}
                     </div>
@@ -506,12 +525,12 @@ export default function Navbar({ onBookClick }) {
                     document.body.style.overflow = '';
                     navigate('/process');
                   }}
-                  className={`text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900 ${
-                    location.pathname === '/process' ? 'bg-[#D4AF77]/30 font-bold text-[#4A0715]' : ''
+                  className={`text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-[#F7F9FC] transition-colors flex items-center justify-between text-left cursor-pointer text-[#111111] ${
+                    location.pathname === '/process' ? 'bg-[#163BC7]/10 font-bold text-[#163BC7]' : ''
                   }`}
                 >
                   <span>Our 4-Step Process</span>
-                  <ArrowRight className="w-4 h-4 text-[#7A5826]" />
+                  <ArrowRight className="w-4 h-4 text-[#163BC7]" />
                 </button>
 
                 {/* Client Perspectives Page Link */}
@@ -522,12 +541,12 @@ export default function Navbar({ onBookClick }) {
                     document.body.style.overflow = '';
                     navigate('/client-perspectives');
                   }}
-                  className={`text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900 ${
-                    location.pathname === '/client-perspectives' ? 'bg-[#D4AF77]/30 font-bold text-[#4A0715]' : ''
+                  className={`text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-[#F7F9FC] transition-colors flex items-center justify-between text-left cursor-pointer text-[#111111] ${
+                    location.pathname === '/client-perspectives' ? 'bg-[#163BC7]/10 font-bold text-[#163BC7]' : ''
                   }`}
                 >
                   <span>Client Perspectives</span>
-                  <ArrowRight className="w-4 h-4 text-[#7A5826]" />
+                  <ArrowRight className="w-4 h-4 text-[#163BC7]" />
                 </button>
 
                 {/* Book Now Dedicated Link */}
@@ -538,15 +557,15 @@ export default function Navbar({ onBookClick }) {
                     document.body.style.overflow = '';
                     navigate('/booking');
                   }}
-                  className={`text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900 ${
-                    location.pathname === '/booking' ? 'bg-[#D4AF77]/30 font-bold text-[#4A0715]' : ''
+                  className={`text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-[#F7F9FC] transition-colors flex items-center justify-between text-left cursor-pointer text-[#111111] ${
+                    location.pathname === '/booking' ? 'bg-[#163BC7]/10 font-bold text-[#163BC7]' : ''
                   }`}
                 >
                   <span className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-[#C8102E]" />
+                    <Sparkles className="w-4 h-4 text-[#0787F9]" />
                     <span>Reserve Date (Book Now)</span>
                   </span>
-                  <ArrowRight className="w-4 h-4 text-[#7A5826]" />
+                  <ArrowRight className="w-4 h-4 text-[#163BC7]" />
                 </button>
 
                 {/* Contact Page Link */}
@@ -557,29 +576,29 @@ export default function Navbar({ onBookClick }) {
                     document.body.style.overflow = '';
                     navigate('/contact');
                   }}
-                  className={`text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-black/5 transition-colors flex items-center justify-between text-left cursor-pointer text-gray-900 ${
-                    location.pathname === '/contact' ? 'bg-[#D4AF77]/30 font-bold text-[#4A0715]' : ''
+                  className={`text-base font-serif tracking-wide px-3.5 py-2.5 rounded-xl hover:bg-[#F7F9FC] transition-colors flex items-center justify-between text-left cursor-pointer text-[#111111] ${
+                    location.pathname === '/contact' ? 'bg-[#163BC7]/10 font-bold text-[#163BC7]' : ''
                   }`}
                 >
                   <span>Contact &amp; Studio</span>
-                  <ArrowRight className="w-4 h-4 text-[#7A5826]" />
+                  <ArrowRight className="w-4 h-4 text-[#163BC7]" />
                 </button>
               </div>
 
               {/* Bottom Contact Pill & Full CTA */}
-              <div className="pt-4 pb-1 border-t border-[#D4AF77]/30 mt-4 space-y-3">
+              <div className="pt-4 pb-1 border-t border-[#D9DEE8] mt-4 space-y-3">
                 <button
                   onClick={handleBookingCTA}
-                  className="w-full py-3 rounded-full bg-white text-gray-900 font-bold text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer border border-[#D4AF77]/40 active:scale-[0.99] group"
+                  className="w-full py-3 rounded-full bg-[#163BC7] hover:bg-[#0B1638] text-white font-bold text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer border border-[#163BC7] active:scale-[0.99] group"
                 >
-                  <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#F3E9DC] via-[#D4AF77] to-[#B3874B] border border-[#D4AF77]/60 flex items-center justify-center shadow-sm shrink-0">
-                    <Camera className="w-3 h-3 text-[#2A040C]" />
+                  <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center shadow-sm shrink-0">
+                    <Camera className="w-3 h-3 text-white" />
                   </div>
                   <span>BOOK YOUR EVENT</span>
                 </button>
-                <div className="flex justify-between items-center text-xs px-2 text-gray-600">
+                <div className="flex justify-between items-center text-xs px-2 text-[#555B68]">
                   <span>{STUDIO_INFO.location.address}</span>
-                  <a href={`tel:${STUDIO_INFO.contact.phone}`} className="font-semibold text-gray-900 hover:text-[#C8102E] transition-colors">
+                  <a href={`tel:${STUDIO_INFO.contact.phone}`} className="font-semibold text-[#111111] hover:text-[#163BC7] transition-colors">
                     {STUDIO_INFO.contact.phoneDisplay}
                   </a>
                 </div>

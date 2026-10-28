@@ -48,9 +48,9 @@ export default function ClientPerspectivesPage({ onBookClick }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFFDF7] text-[#1A1A1A] selection:bg-[#C8102E] selection:text-white">
+    <div className="min-h-screen bg-white text-[#111111] selection:bg-[#163BC7] selection:text-white">
       {/* 1. Cinematic Hero Banner */}
-      <section className="relative min-h-[75vh] sm:min-h-[85vh] w-full flex flex-col justify-end sm:justify-center items-center overflow-hidden bg-[#2A040C]">
+      <section className="relative min-h-[75vh] sm:min-h-[85vh] w-full flex flex-col justify-end sm:justify-center items-center overflow-hidden bg-[#0B1638]">
         {/* Background Image with Slow Subtle Motion */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <motion.div
@@ -62,16 +62,15 @@ export default function ClientPerspectivesPage({ onBookClick }) {
             <img
               src="/assets/web/wedding-temple-whisper.jpg"
               alt="Kanvi Fotography Client Perspectives and Stories"
-              style={{ objectPosition: isMobile ? '52% 52%' : 'center 56%' }}
-              className="w-full h-full object-cover filter brightness-[0.92] contrast-[1.05]"
+              style={{ objectPosition: isMobile ? '52% 52%' : '52% 50%' }}
+              className="w-full h-full object-cover filter brightness-[0.93] contrast-[1.03]"
               loading="eager"
             />
           </motion.div>
 
-          {/* Luxury Burgundy & Gold Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#2A040C] via-[#2A040C]/50 via-65% to-transparent sm:to-[#2A040C]/35" />
+          {/* Clean, Neutral Photographic Vignette - Zero blue cast so wedding photos look natural & rich */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 via-45% to-transparent pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent pointer-events-none" />
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[650px] h-[250px] sm:h-[450px] bg-[radial-gradient(ellipse_at_center,_rgba(212,175,119,0.15),_transparent_70%)] rounded-full pointer-events-none" />
         </div>
 
         {/* Hero Content */}
@@ -81,13 +80,13 @@ export default function ClientPerspectivesPage({ onBookClick }) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#D4AF77] mb-2 sm:mb-3"
+            className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#0787F9] mb-2 sm:mb-3"
           >
             <Link to="/" className="hover:text-white transition-colors">
               Home
             </Link>
-            <span className="text-[#D4AF77]/60">/</span>
-            <span className="text-[#FFFDF7] font-semibold">Client Perspectives</span>
+            <span className="text-white/40">/</span>
+            <span className="text-white font-semibold">Client Perspectives</span>
           </motion.div>
 
           {/* Badge */}
@@ -95,10 +94,10 @@ export default function ClientPerspectivesPage({ onBookClick }) {
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#4A0715]/80 border border-[#D4AF77]/40 backdrop-blur-md mb-2 sm:mb-4 shadow-xl"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#0B1638]/80 border border-[#D9DEE8]/30 backdrop-blur-md mb-2 sm:mb-4 shadow-xl"
           >
-            <MessageSquareHeart className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#D4AF77] shrink-0" />
-            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.25em] uppercase text-[#F3E9DC] whitespace-nowrap">
+            <MessageSquareHeart className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#0787F9] shrink-0" />
+            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.25em] uppercase text-[#F7F9FC] whitespace-nowrap">
               VOICES OF TRUST &amp; GRATITUDE
             </span>
           </motion.div>
@@ -108,7 +107,7 @@ export default function ClientPerspectivesPage({ onBookClick }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-[#FFFDF7] font-normal tracking-tight leading-tight mb-2 sm:mb-4 max-w-4xl"
+            className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-tight mb-2 sm:mb-4 max-w-4xl"
           >
             Client Perspectives &amp; Stories
           </motion.h1>
@@ -118,7 +117,7 @@ export default function ClientPerspectivesPage({ onBookClick }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="text-xs sm:text-base md:text-lg text-[#F3E9DC]/90 font-light max-w-2xl mx-auto leading-relaxed mb-4 sm:mb-8"
+            className="text-xs sm:text-base md:text-lg text-[#F7F9FC]/90 font-light max-w-2xl mx-auto leading-relaxed mb-4 sm:mb-8"
           >
             The greatest honor of our studio is the deep trust placed in us by couples and families across Tamil Nadu. Read their real experiences, memories, and reflections.
           </motion.p>
@@ -133,9 +132,9 @@ export default function ClientPerspectivesPage({ onBookClick }) {
             <button
               type="button"
               onClick={handleBookingCTA}
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full bg-[#D4AF77] hover:bg-[#C29B63] text-[#2A040C] font-semibold text-xs sm:text-sm tracking-[0.15em] uppercase transition-all duration-300 shadow-xl shadow-[#D4AF77]/20 flex items-center justify-center gap-2 cursor-pointer group hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full bg-[#163BC7] hover:bg-[#0B1638] text-white font-semibold text-xs sm:text-sm tracking-[0.15em] uppercase transition-all duration-300 shadow-xl shadow-[#163BC7]/20 flex items-center justify-center gap-2 cursor-pointer group border border-[#163BC7]"
             >
-              <Calendar className="w-4 h-4 text-[#2A040C]" />
+              <Calendar className="w-4 h-4 text-white" />
               <span>Reserve Your Sacred Date</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
@@ -143,9 +142,9 @@ export default function ClientPerspectivesPage({ onBookClick }) {
             <button
               type="button"
               onClick={handleShareReview}
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full bg-white/10 hover:bg-white/20 text-[#FFFDF7] font-medium text-xs sm:text-sm tracking-[0.15em] uppercase transition-all duration-300 backdrop-blur-md border border-white/20 flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium text-xs sm:text-sm tracking-[0.15em] uppercase transition-all duration-300 backdrop-blur-md border border-white/20 flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Send className="w-4 h-4 text-[#D4AF77]" />
+              <Send className="w-4 h-4 text-[#0787F9]" />
               <span>Share Your Experience</span>
             </button>
           </motion.div>
@@ -153,19 +152,19 @@ export default function ClientPerspectivesPage({ onBookClick }) {
       </section>
 
       {/* 2. Google Reviews & Trust Bar */}
-      <section className="bg-[#4A0715] text-[#FFFDF7] border-y border-[#D4AF77]/30 py-6 sm:py-8 px-4 sm:px-6">
+      <section className="bg-[#0B1638] text-white border-y border-[#D9DEE8]/20 py-6 sm:py-8 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div className="p-2">
-              <div className="flex items-center justify-center gap-1 text-[#D4AF77] mb-1">
+              <div className="flex items-center justify-center gap-1 text-[#0787F9] mb-1">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 sm:w-5 h-4 sm:h-5 fill-[#D4AF77] text-[#D4AF77]" />
+                  <Star key={i} className="w-4 sm:w-5 h-4 sm:h-5 fill-[#0787F9] text-[#0787F9]" />
                 ))}
               </div>
               <div className="font-serif text-xl sm:text-2xl font-bold text-white">
                 {GOOGLE_REVIEWS_SUMMARY.averageRating} / 5.0
               </div>
-              <div className="text-[10px] sm:text-xs text-[#D4AF77] uppercase tracking-wider font-semibold">
+              <div className="text-[10px] sm:text-xs text-[#0787F9] uppercase tracking-wider font-semibold">
                 Google Rating
               </div>
             </div>
@@ -174,7 +173,7 @@ export default function ClientPerspectivesPage({ onBookClick }) {
               <div className="font-serif text-2xl sm:text-3xl font-bold text-white mb-0.5">
                 {GOOGLE_REVIEWS_SUMMARY.totalReviews}
               </div>
-              <div className="text-[10px] sm:text-xs text-[#D4AF77] uppercase tracking-wider font-semibold">
+              <div className="text-[10px] sm:text-xs text-[#0787F9] uppercase tracking-wider font-semibold">
                 Celebrations Preserved
               </div>
               <div className="text-[10px] text-white/60">Across Tamil Nadu &amp; India</div>
@@ -184,7 +183,7 @@ export default function ClientPerspectivesPage({ onBookClick }) {
               <div className="font-serif text-2xl sm:text-3xl font-bold text-white mb-0.5">
                 {GOOGLE_REVIEWS_SUMMARY.fiveStarPercentage}
               </div>
-              <div className="text-[10px] sm:text-xs text-[#D4AF77] uppercase tracking-wider font-semibold">
+              <div className="text-[10px] sm:text-xs text-[#0787F9] uppercase tracking-wider font-semibold">
                 5-Star Client Satisfaction
               </div>
               <div className="text-[10px] text-white/60">Verified Couple Feedback</div>
@@ -194,7 +193,7 @@ export default function ClientPerspectivesPage({ onBookClick }) {
               <div className="font-serif text-2xl sm:text-3xl font-bold text-white mb-0.5">
                 {GOOGLE_REVIEWS_SUMMARY.yearsServing}
               </div>
-              <div className="text-[10px] sm:text-xs text-[#D4AF77] uppercase tracking-wider font-semibold">
+              <div className="text-[10px] sm:text-xs text-[#0787F9] uppercase tracking-wider font-semibold">
                 Boutique Heritage Studio
               </div>
               <div className="text-[10px] text-white/60">Founded in {STUDIO_INFO.establishedYear}</div>
@@ -215,8 +214,8 @@ export default function ClientPerspectivesPage({ onBookClick }) {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wider transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? 'bg-[#4A0715] text-[#FFFDF7] shadow-md border border-[#4A0715]'
-                    : 'bg-[#F3E9DC]/70 hover:bg-[#F3E9DC] text-gray-700 border border-[#D4AF77]/30'
+                    ? 'bg-[#163BC7] text-white shadow-md border border-[#163BC7]'
+                    : 'bg-[#F7F9FC] hover:bg-white text-[#555B68] border border-[#D9DEE8]'
                 }`}
               >
                 {cat.label}
@@ -238,13 +237,13 @@ export default function ClientPerspectivesPage({ onBookClick }) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.45, delay: idx * 0.08 }}
-                className="rounded-3xl bg-[#F3E9DC]/50 border border-[#D4AF77]/35 p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:border-[#D4AF77]"
+                className="rounded-3xl bg-[#F7F9FC] border border-[#D9DEE8] p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:border-[#163BC7]/50"
               >
                 <div>
                   {/* Top Header with Image & Couple Details */}
                   <div className="flex items-start justify-between gap-4 mb-6">
                     <div className="flex items-center gap-3.5">
-                      <div className="h-14 w-14 sm:h-16 sm:w-16 rounded-2xl overflow-hidden border-2 border-[#D4AF77]/60 shadow-md shrink-0">
+                      <div className="h-14 w-14 sm:h-16 sm:w-16 rounded-2xl overflow-hidden border-2 border-[#D9DEE8] shadow-sm shrink-0">
                         <img
                           src={rev.image}
                           alt={rev.couple}
@@ -252,50 +251,50 @@ export default function ClientPerspectivesPage({ onBookClick }) {
                         />
                       </div>
                       <div>
-                        <h3 className="font-serif text-lg sm:text-xl font-bold text-gray-900 group-hover:text-[#4A0715] transition-colors">
+                        <h3 className="font-serif text-lg sm:text-xl font-bold text-[#111111] group-hover:text-[#163BC7] transition-colors">
                           {rev.couple}
                         </h3>
-                        <div className="text-xs text-[#7A5826] font-medium flex items-center gap-1.5 mt-0.5">
-                          <MapPin className="w-3.5 h-3.5 text-[#C8102E] shrink-0" />
+                        <div className="text-xs text-[#555B68] font-medium flex items-center gap-1.5 mt-0.5">
+                          <MapPin className="w-3.5 h-3.5 text-[#163BC7] shrink-0" />
                           <span>{rev.location}</span>
                         </div>
-                        <div className="text-[11px] text-gray-500">{rev.date}</div>
+                        <div className="text-[11px] text-[#555B68]/70">{rev.date}</div>
                       </div>
                     </div>
 
-                    {/* Gold Rating Stars */}
-                    <div className="flex items-center gap-1 bg-white/80 px-2.5 py-1 rounded-full border border-[#D4AF77]/30 shadow-sm shrink-0">
+                    {/* Rating Stars */}
+                    <div className="flex items-center gap-1 bg-white px-2.5 py-1 rounded-full border border-[#D9DEE8] shadow-xs shrink-0">
                       {[...Array(rev.rating)].map((_, i) => (
-                        <Star key={i} className="w-3.5 h-3.5 fill-[#D4AF77] text-[#D4AF77]" />
+                        <Star key={i} className="w-3.5 h-3.5 fill-[#163BC7] text-[#163BC7]" />
                       ))}
                     </div>
                   </div>
 
                   {/* Highlight Banner */}
-                  <div className="p-3.5 rounded-xl bg-white/70 border-l-4 border-[#C8102E] mb-4 text-xs sm:text-sm font-semibold text-gray-800">
+                  <div className="p-3.5 rounded-xl bg-white border-l-4 border-[#163BC7] mb-4 text-xs sm:text-sm font-semibold text-[#111111] shadow-xs">
                     "{rev.highlight}"
                   </div>
 
                   {/* Full Review Text */}
-                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed font-light mb-6">
+                  <p className="text-[#555B68] text-xs sm:text-sm leading-relaxed font-light mb-6">
                     {rev.review}
                   </p>
                 </div>
 
                 {/* Bottom Deliverables & Event Badge */}
-                <div className="pt-4 border-t border-[#D4AF77]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[11px]">
+                <div className="pt-4 border-t border-[#D9DEE8] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[11px]">
                   <div className="flex flex-wrap gap-1.5">
                     {rev.deliverables.map((item, dIdx) => (
                       <span
                         key={dIdx}
-                        className="px-2.5 py-0.5 rounded-md bg-white border border-[#D4AF77]/30 text-gray-700 font-medium"
+                        className="px-2.5 py-0.5 rounded-md bg-white border border-[#D9DEE8] text-[#555B68] font-medium"
                       >
                         {item}
                       </span>
                     ))}
                   </div>
 
-                  <div className="inline-flex items-center gap-1 text-[#25D366] font-semibold">
+                  <div className="inline-flex items-center gap-1 text-[#163BC7] font-semibold">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>Verified Couple</span>
                   </div>
@@ -307,48 +306,48 @@ export default function ClientPerspectivesPage({ onBookClick }) {
       </section>
 
       {/* 5. Invitation to Share Experience */}
-      <section className="py-16 sm:py-20 bg-[#F3E9DC]/80 border-t border-[#D4AF77]/35 px-4">
-        <div className="max-w-3xl mx-auto p-8 sm:p-12 rounded-3xl bg-white border border-[#D4AF77]/40 shadow-xl text-center relative overflow-hidden">
-          <div className="h-14 w-14 rounded-full bg-[#4A0715] text-[#D4AF77] border border-[#D4AF77]/40 flex items-center justify-center mx-auto mb-4 shadow-md">
-            <Heart className="w-7 h-7 text-[#C8102E]" />
+      <section className="py-16 sm:py-20 bg-[#F7F9FC] border-t border-[#D9DEE8] px-4">
+        <div className="max-w-3xl mx-auto p-8 sm:p-12 rounded-3xl bg-white border border-[#D9DEE8] shadow-lg text-center relative overflow-hidden">
+          <div className="h-14 w-14 rounded-full bg-[#163BC7] text-white flex items-center justify-center mx-auto mb-4 shadow-md">
+            <Heart className="w-7 h-7 text-white" />
           </div>
-          <h3 className="font-serif text-2xl sm:text-3xl text-gray-900 font-normal mb-3">
+          <h3 className="font-serif text-2xl sm:text-3xl text-[#111111] font-normal mb-3">
             Have We Documented Your Sacred Celebration?
           </h3>
-          <p className="text-gray-600 text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed mb-6">
+          <p className="text-[#555B68] text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed mb-6">
             Your words inspire us to continually strive for perfection. If Kanvi Fotography preserved your wedding, reception, or family milestone, we would be deeply honored to hear your thoughts.
           </p>
           <button
             type="button"
             onClick={handleShareReview}
-            className="px-8 py-3.5 rounded-full bg-[#D4AF77] hover:bg-[#C29B63] text-[#2A040C] font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase transition-all duration-300 shadow-lg shadow-[#D4AF77]/30 flex items-center justify-center gap-2 mx-auto cursor-pointer"
+            className="px-8 py-3.5 rounded-full bg-[#163BC7] hover:bg-[#0B1638] text-white font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase transition-all duration-300 shadow-md shadow-[#163BC7]/20 flex items-center justify-center gap-2 mx-auto cursor-pointer border border-[#163BC7]"
           >
-            <Send className="w-4 h-4 text-[#2A040C]" />
+            <Send className="w-4 h-4 text-white" />
             <span>Send Us Your Review on WhatsApp</span>
           </button>
         </div>
       </section>
 
       {/* 6. Final Booking CTA */}
-      <section className="py-16 sm:py-24 bg-[#2A040C] text-[#FFFDF7] px-4 text-center">
+      <section className="py-16 sm:py-24 bg-[#0B1638] text-white px-4 text-center">
         <div className="max-w-3xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#4A0715] border border-[#D4AF77]/40 text-xs tracking-[0.25em] uppercase text-[#D4AF77] font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-[#D4AF77]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-xs tracking-[0.25em] uppercase text-[#0787F9] font-semibold">
+            <Sparkles className="w-3.5 h-3.5 text-[#0787F9]" />
             <span>Your Story Awaits</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-white">
             Ready to Create Your Own Timeless Story?
           </h2>
-          <p className="text-[#F3E9DC]/80 text-xs sm:text-base font-light max-w-xl mx-auto leading-relaxed">
+          <p className="text-[#D9DEE8] text-xs sm:text-base font-light max-w-xl mx-auto leading-relaxed">
             Every celebration receives our undivided artistic dedication. Reserve your Muhurtham or celebration date on our calendar today.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <button
               type="button"
               onClick={handleBookingCTA}
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#D4AF77] hover:bg-[#C29B63] text-[#2A040C] font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase transition-all duration-300 shadow-xl shadow-[#D4AF77]/20 flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#163BC7] hover:bg-[#0787F9] text-white font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase transition-all duration-300 shadow-xl shadow-[#163BC7]/20 flex items-center justify-center gap-2 cursor-pointer border border-[#163BC7]"
             >
-              <Calendar className="w-4 h-4 text-[#2A040C]" />
+              <Calendar className="w-4 h-4 text-white" />
               <span>Reserve Your Date (Book Now)</span>
             </button>
             <Link
@@ -356,7 +355,7 @@ export default function ClientPerspectivesPage({ onBookClick }) {
               className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm tracking-[0.15em] uppercase transition-all duration-300 border border-white/20 flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Explore Our 4-Step Process</span>
-              <ArrowRight className="w-4 h-4 text-[#D4AF77]" />
+              <ArrowRight className="w-4 h-4 text-[#0787F9]" />
             </Link>
           </div>
         </div>

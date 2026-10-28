@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, MessageSquare, ChevronLeft, ChevronRight, Maximize2, Sparkles, CheckCircle2 } from 'lucide-react';
+import { X, Calendar, MessageSquare, ChevronLeft, ChevronRight, Maximize2, CheckCircle2 } from 'lucide-react';
 import { STUDIO_INFO } from '../data/studioInfo';
 
 export default function ServiceGalleryModal({ service, onClose, onEnquire }) {
@@ -80,21 +80,21 @@ export default function ServiceGalleryModal({ service, onClose, onEnquire }) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl border border-[#D4AF77]/30 my-auto z-10 flex flex-col max-h-[92vh] overflow-hidden"
+          className="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl border border-[#D9DEE8] my-auto z-10 flex flex-col max-h-[92vh] overflow-hidden"
         >
           {/* Top Header Bar */}
-          <div className="relative px-6 py-5 border-b border-gray-100 flex items-center justify-between bg-[#FFFDF7]">
+          <div className="relative px-6 py-5 border-b border-[#D9DEE8] flex items-center justify-between bg-[#F7F9FC]">
             <div className="pr-10">
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#C8102E] px-2.5 py-0.5 rounded-full bg-[#FFE5E9] border border-[#C8102E]/20">
+                <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#163BC7] px-2.5 py-0.5 rounded-full bg-[#163BC7]/10 border border-[#163BC7]/25">
                   {service.category}
                 </span>
                 <span className="text-xs text-gray-400">•</span>
-                <span className="text-xs text-[#4A0715] font-medium">{service.tag}</span>
+                <span className="text-xs text-[#0B1638] font-medium">{service.tag}</span>
               </div>
               <h2
                 id="service-gallery-title"
-                className="font-serif text-2xl sm:text-3xl text-gray-900 font-normal leading-tight"
+                className="font-serif text-2xl sm:text-3xl text-[#111111] font-normal leading-tight"
               >
                 {service.title} Showcase
               </h2>
@@ -104,7 +104,7 @@ export default function ServiceGalleryModal({ service, onClose, onEnquire }) {
             <button
               type="button"
               onClick={onClose}
-              className="p-2 rounded-xl border border-gray-200 text-gray-500 hover:text-black hover:bg-gray-100 transition-colors cursor-pointer shrink-0"
+              className="p-2 rounded-xl border border-[#D9DEE8] text-[#555B68] hover:text-[#111111] hover:bg-slate-100 transition-colors cursor-pointer shrink-0"
               aria-label="Close photo gallery"
             >
               <X className="w-5 h-5" />
@@ -114,17 +114,17 @@ export default function ServiceGalleryModal({ service, onClose, onEnquire }) {
           {/* Scrollable Gallery Content */}
           <div className="overflow-y-auto p-6 sm:p-8 space-y-6">
             {/* Description & Feature Chips */}
-            <div className="bg-gray-50/70 p-4 rounded-xl border border-gray-200/80">
-              <p className="text-sm text-gray-700 leading-relaxed font-light mb-3">
+            <div className="bg-[#F7F9FC] p-4 rounded-xl border border-[#D9DEE8]">
+              <p className="text-sm text-[#555B68] leading-relaxed font-light mb-3">
                 {service.description}
               </p>
               <div className="flex flex-wrap gap-2">
                 {service.features.map((feat, i) => (
                   <span
                     key={i}
-                    className="inline-flex items-center gap-1.5 text-xs text-gray-800 bg-white px-3 py-1 rounded-full border border-gray-200 shadow-2xs font-medium"
+                    className="inline-flex items-center gap-1.5 text-xs text-[#111111] bg-white px-3 py-1 rounded-full border border-[#D9DEE8] shadow-2xs font-medium"
                   >
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C8102E]" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#163BC7]" />
                     <span>{feat}</span>
                   </span>
                 ))}
@@ -134,10 +134,10 @@ export default function ServiceGalleryModal({ service, onClose, onEnquire }) {
             {/* Photo Gallery Grid */}
             <div>
               <div className="flex items-center justify-between mb-3 px-1">
-                <span className="text-xs uppercase tracking-wider font-semibold text-gray-600">
+                <span className="text-xs uppercase tracking-wider font-semibold text-[#111111]">
                   Curated Photographs ({photos.length} Frames)
                 </span>
-                <span className="text-[11px] text-gray-400 italic">Click any photo to enlarge</span>
+                <span className="text-[11px] text-[#555B68] italic">Click any photo to enlarge</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -147,7 +147,7 @@ export default function ServiceGalleryModal({ service, onClose, onEnquire }) {
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.25 }}
                     onClick={() => setActivePhotoIndex(idx)}
-                    className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-black/50 cursor-pointer shadow-md border border-[#D4AF77]/30 hover:border-[#D4AF77] hover:shadow-xl transition-all"
+                    className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-black/50 cursor-pointer shadow-md border border-[#D9DEE8] hover:border-[#163BC7] hover:shadow-xl transition-all"
                   >
                     <img
                       src={imgUrl}
@@ -170,15 +170,15 @@ export default function ServiceGalleryModal({ service, onClose, onEnquire }) {
           </div>
 
           {/* Action Footer */}
-          <div className="px-6 py-4 bg-[#FFFDF7] border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <span className="text-xs text-gray-500 text-center sm:text-left">
+          <div className="px-6 py-4 bg-[#F7F9FC] border-t border-[#D9DEE8] flex flex-col sm:flex-row items-center justify-between gap-3">
+            <span className="text-xs text-[#555B68] text-center sm:text-left">
               Need custom coverage or multi-day pricing? Bala is available pan-India.
             </span>
             <div className="flex items-center gap-3 w-full sm:w-auto">
               <button
                 type="button"
                 onClick={handleDirectWhatsApp}
-                className="flex-1 sm:flex-none px-4 py-2.5 rounded-xl border border-[#25D366] text-black hover:bg-[#25D366]/10 text-xs font-semibold tracking-wider uppercase transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                className="flex-1 sm:flex-none px-4 py-2.5 rounded-xl border border-[#25D366] text-[#111111] hover:bg-[#25D366]/10 text-xs font-semibold tracking-wider uppercase transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" />
                 <span>WhatsApp</span>
@@ -189,9 +189,9 @@ export default function ServiceGalleryModal({ service, onClose, onEnquire }) {
                   onClose();
                   if (onEnquire) onEnquire(service.title);
                 }}
-                className="flex-1 sm:flex-none px-5 py-2.5 rounded-xl bg-[#D4AF77] hover:bg-[#C29B63] text-[#2A040C] text-xs font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-lg cursor-pointer flex items-center justify-center gap-2"
+                className="flex-1 sm:flex-none px-5 py-2.5 rounded-xl bg-[#163BC7] hover:bg-[#0B1638] text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-lg cursor-pointer flex items-center justify-center gap-2"
               >
-                <Calendar className="w-3.5 h-3.5 text-[#2A040C]" />
+                <Calendar className="w-3.5 h-3.5 text-white" />
                 <span>Enquire for this Service</span>
               </button>
             </div>
@@ -244,7 +244,7 @@ export default function ServiceGalleryModal({ service, onClose, onEnquire }) {
                       <button
                         type="button"
                         onClick={handlePrevPhoto}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-[#D4AF77] text-white hover:text-black transition-colors cursor-pointer"
+                        className="absolute left-2 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-[#163BC7] text-white transition-colors cursor-pointer"
                         aria-label="Previous photo"
                       >
                         <ChevronLeft className="w-6 h-6" />
@@ -252,7 +252,7 @@ export default function ServiceGalleryModal({ service, onClose, onEnquire }) {
                       <button
                         type="button"
                         onClick={handleNextPhoto}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-[#D4AF77] text-white hover:text-black transition-colors cursor-pointer"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-[#163BC7] text-white transition-colors cursor-pointer"
                         aria-label="Next photo"
                       >
                         <ChevronRight className="w-6 h-6" />
@@ -271,7 +271,7 @@ export default function ServiceGalleryModal({ service, onClose, onEnquire }) {
                       onClose();
                       if (onEnquire) onEnquire(service.title);
                     }}
-                    className="px-6 py-2.5 rounded-full bg-[#D4AF77] text-[#2A040C] text-xs font-bold uppercase tracking-wider hover:bg-[#C29B63] transition-colors shadow-lg cursor-pointer"
+                    className="px-6 py-2.5 rounded-full bg-[#163BC7] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#0B1638] transition-colors shadow-lg cursor-pointer"
                   >
                     Enquire for {service.title}
                   </button>

@@ -81,13 +81,13 @@ export default function FilmModal({ film, onClose, onEnquire }) {
             exit={{ opacity: 0, scale: 0.96, y: 10 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-4xl bg-[#0E1117] border border-white/10 rounded-3xl overflow-hidden shadow-2xl my-auto"
+            className="relative w-full max-w-4xl bg-[#0B1638] border border-[#D9DEE8]/20 rounded-3xl overflow-hidden shadow-2xl my-auto text-white"
           >
             {/* Close Button */}
             <button
               type="button"
               onClick={onClose}
-              className="absolute top-4 right-4 z-30 p-2.5 rounded-full bg-black/70 hover:bg-[#D4AF77] text-white hover:text-[#2A040C] transition-colors cursor-pointer border border-white/20 shadow-xl"
+              className="absolute top-4 right-4 z-30 p-2.5 rounded-full bg-black/70 hover:bg-[#163BC7] text-white transition-colors cursor-pointer border border-white/20 shadow-xl"
               aria-label="Close Film Player"
             >
               <X className="w-5 h-5" />
@@ -131,20 +131,20 @@ export default function FilmModal({ film, onClose, onEnquire }) {
                       <button
                         type="button"
                         onClick={() => setIsPlaying(true)}
-                        className="h-20 w-20 rounded-full bg-[#D4AF77] hover:bg-[#C29B63] text-[#2A040C] flex items-center justify-center shadow-2xl shadow-[#D4AF77]/40 hover:scale-110 transition-all duration-300 cursor-pointer"
+                        className="h-20 w-20 rounded-full bg-[#163BC7] hover:bg-[#0787F9] text-white flex items-center justify-center shadow-2xl shadow-[#163BC7]/40 hover:scale-110 transition-all duration-300 cursor-pointer"
                         aria-label="Play Cinema Reel"
                       >
-                        <Play className="w-8 h-8 ml-1 fill-[#2A040C] text-[#2A040C]" />
+                        <Play className="w-8 h-8 ml-1 fill-white text-white" />
                       </button>
                       <p className="mt-4 text-xs tracking-[0.25em] uppercase text-white font-medium">
                         Click to Preview Cinematic Reel
                       </p>
-                      <p className="text-[11px] text-gray-400 mt-1">Audio is muted by default</p>
+                      <p className="text-[11px] text-slate-400 mt-1">Audio is muted by default</p>
                     </div>
                   ) : (
                     <div className="absolute inset-0 flex flex-col justify-between p-4 sm:p-6 bg-gradient-to-t from-black/80 via-transparent to-black/60 pointer-events-none">
                       <div className="flex justify-between items-center pointer-events-auto">
-                        <span className="px-3 py-1 rounded-full bg-[#D4AF77] text-[#2A040C] text-[10px] font-bold tracking-wider uppercase">
+                        <span className="px-3 py-1 rounded-full bg-[#163BC7] text-white text-[10px] font-bold tracking-wider uppercase">
                           Previewing • {film.resolution}
                         </span>
                         <button
@@ -164,10 +164,10 @@ export default function FilmModal({ film, onClose, onEnquire }) {
                             initial={{ width: '0%' }}
                             animate={{ width: '100%' }}
                             transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-                            className="h-full bg-[#D4AF77]"
+                            className="h-full bg-[#0787F9]"
                           />
                         </div>
-                        <div className="flex justify-between text-[11px] text-gray-300 font-mono">
+                        <div className="flex justify-between text-[11px] text-slate-300 font-mono">
                           <span>Playing Reel</span>
                           <span>{film.duration}</span>
                         </div>
@@ -178,110 +178,110 @@ export default function FilmModal({ film, onClose, onEnquire }) {
               )}
             </div>
 
-          {/* Film Specifications & Overview */}
-          <div className="p-6 sm:p-8 space-y-6">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <span className="text-xs uppercase tracking-[0.25em] text-[#D4AF77] font-semibold">
-                  {film.category}
-                </span>
-                <h3 className="font-serif text-2xl sm:text-3xl text-white font-normal mt-1">
-                  {film.title}
-                </h3>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs text-gray-300 font-mono">
-                  {film.resolution}
-                </span>
-                <span className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs text-gray-300 font-mono">
-                  {currentDuration}
-                </span>
-              </div>
-            </div>
-
-            {/* Multiple Cut / Reel Switcher (if available) */}
-            {film.altVideoUrl && (
-              <div className="flex flex-wrap items-center gap-2.5 p-3 rounded-xl bg-white/[0.03] border border-white/10">
-                <span className="text-xs text-[#D4AF77] font-semibold tracking-wider uppercase">Select Cut:</span>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedVideo(film.videoUrl);
-                    setSelectedDuration(film.duration);
-                  }}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
-                    currentVideoUrl === film.videoUrl
-                      ? 'bg-[#D4AF77] text-[#2A040C] font-bold shadow-md shadow-[#D4AF77]/30'
-                      : 'bg-white/10 text-gray-300 hover:bg-white/20'
-                  }`}
-                >
-                  Drone Cut 1 ({film.duration})
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedVideo(film.altVideoUrl);
-                    setSelectedDuration(film.altDuration || 'Cut 2');
-                  }}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
-                    currentVideoUrl === film.altVideoUrl
-                      ? 'bg-[#D4AF77] text-[#2A040C] font-bold shadow-md shadow-[#D4AF77]/30'
-                      : 'bg-white/10 text-gray-300 hover:bg-white/20'
-                  }`}
-                >
-                  Drone Cut 2 ({film.altDuration || 'Cut 2'})
-                </button>
-              </div>
-            )}
-
-            <p className="text-gray-300 text-sm sm:text-base leading-relaxed font-light">
-              {film.description}
-            </p>
-
-            {/* Gear & Tech Spec */}
-            {film.gear && (
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-gray-300 flex items-start gap-3">
-                <Video className="w-4 h-4 text-[#D4AF77] shrink-0 mt-0.5" />
+            {/* Film Specifications & Overview */}
+            <div className="p-6 sm:p-8 space-y-6">
+              <div className="flex flex-wrap items-center justify-between gap-4">
                 <div>
-                  <span className="font-semibold text-white">Production Gear &amp; Standard: </span>
-                  <span className="text-gray-300">{film.gear}</span>
+                  <span className="text-xs uppercase tracking-[0.25em] text-[#0787F9] font-semibold">
+                    {film.category}
+                  </span>
+                  <h3 className="font-serif text-2xl sm:text-3xl text-white font-normal mt-1">
+                    {film.title}
+                  </h3>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-300 font-mono">
+                    {film.resolution}
+                  </span>
+                  <span className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-300 font-mono">
+                    {currentDuration}
+                  </span>
                 </div>
               </div>
-            )}
 
-            {/* Features */}
-            {film.features && (
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {film.features.map((feat, i) => (
-                  <div
-                    key={i}
-                    className="p-3 rounded-lg bg-black/40 border border-white/5 text-xs text-gray-300 flex items-center gap-2"
+              {/* Multiple Cut / Reel Switcher (if available) */}
+              {film.altVideoUrl && (
+                <div className="flex flex-wrap items-center gap-2.5 p-3 rounded-xl bg-white/[0.03] border border-white/10">
+                  <span className="text-xs text-[#0787F9] font-semibold tracking-wider uppercase">Select Cut:</span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedVideo(film.videoUrl);
+                      setSelectedDuration(film.duration);
+                    }}
+                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
+                      currentVideoUrl === film.videoUrl
+                        ? 'bg-[#163BC7] text-white font-bold shadow-md shadow-[#163BC7]/30'
+                        : 'bg-white/10 text-slate-300 hover:bg-white/20'
+                    }`}
                   >
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#D4AF77] shrink-0" />
-                    <span>{feat}</span>
-                  </div>
-                ))}
-              </div>
-            )}
+                    Drone Cut 1 ({film.duration})
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedVideo(film.altVideoUrl);
+                      setSelectedDuration(film.altDuration || 'Cut 2');
+                    }}
+                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
+                      currentVideoUrl === film.altVideoUrl
+                        ? 'bg-[#163BC7] text-white font-bold shadow-md shadow-[#163BC7]/30'
+                        : 'bg-white/10 text-slate-300 hover:bg-white/20'
+                    }`}
+                  >
+                    Drone Cut 2 ({film.altDuration || 'Cut 2'})
+                  </button>
+                </div>
+              )}
 
-            {/* Modal Actions */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-white/10">
-              <span className="text-xs text-gray-500">
-                Full-length mastered files &amp; raw reels delivered in encrypted cloud storage and hard drive.
-              </span>
-              <button
-                type="button"
-                onClick={handleEnquiry}
-                className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#D4AF77] hover:bg-[#C29B63] text-[#2A040C] text-xs font-bold tracking-wider uppercase transition-colors flex items-center justify-center gap-2 shadow-lg shadow-[#D4AF77]/30 cursor-pointer"
-              >
-                <MessageSquare className="w-4 h-4 text-[#2A040C]" />
-                <span>Enquire for this Service</span>
-              </button>
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
+                {film.description}
+              </p>
+
+              {/* Gear & Tech Spec */}
+              {film.gear && (
+                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/10 text-xs text-slate-300 flex items-start gap-3">
+                  <Video className="w-4 h-4 text-[#0787F9] shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-white">Production Gear &amp; Standard: </span>
+                    <span className="text-slate-300">{film.gear}</span>
+                  </div>
+                </div>
+              )}
+
+              {/* Features */}
+              {film.features && (
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {film.features.map((feat, i) => (
+                    <div
+                      key={i}
+                      className="p-3 rounded-lg bg-black/40 border border-white/5 text-xs text-slate-300 flex items-center gap-2"
+                    >
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#0787F9] shrink-0" />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Modal Actions */}
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-white/10">
+                <span className="text-xs text-slate-400">
+                  Full-length mastered files &amp; raw reels delivered in encrypted cloud storage and hard drive.
+                </span>
+                <button
+                  type="button"
+                  onClick={handleEnquiry}
+                  className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#163BC7] hover:bg-[#0B1638] text-white text-xs font-bold tracking-wider uppercase transition-colors flex items-center justify-center gap-2 shadow-lg shadow-[#163BC7]/30 cursor-pointer border border-[#0787F9]/40 hover:border-[#163BC7]"
+                >
+                  <MessageSquare className="w-4 h-4 text-white" />
+                  <span>Enquire for this Service</span>
+                </button>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
-    </div>
-  </AnimatePresence>
-);
+    </AnimatePresence>
+  );
 }

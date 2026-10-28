@@ -8,7 +8,7 @@ const STEP_ICONS = [MessageCircle, FileText, Camera, Film];
 
 export default function Process() {
   return (
-    <section className="relative py-28 sm:py-36 bg-[#FFFDF7] border-t border-[#D4AF77]/25 overflow-hidden">
+    <section className="relative py-28 sm:py-36 bg-[#F7F9FC] border-t border-[#D9DEE8] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -18,14 +18,14 @@ export default function Process() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F3E9DC] border border-[#D4AF77]/40 text-xs tracking-[0.25em] uppercase text-[#4A0715] font-semibold mb-4 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#D4AF77]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#163BC7]/10 border border-[#163BC7]/20 text-xs tracking-[0.25em] uppercase text-[#163BC7] font-semibold mb-4 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-[#0787F9]" />
             <span>Workflow &amp; Collaboration</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-gray-900 font-normal tracking-tight mb-6">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#111111] font-normal tracking-tight mb-6">
             The Photography Journey
           </h2>
-          <p className="text-gray-600 text-base sm:text-lg font-light leading-relaxed">
+          <p className="text-[#555B68] text-base sm:text-lg font-light leading-relaxed">
             From the first hello to the moment you open your wedding album, our clear 4-step process
             ensures complete peace of mind.
           </p>
@@ -39,7 +39,7 @@ export default function Process() {
             whileInView={{ scaleX: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden lg:block absolute top-1/2 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#D4AF77]/70 to-transparent -translate-y-8 origin-left pointer-events-none"
+            className="hidden lg:block absolute top-1/2 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#163BC7]/40 to-transparent -translate-y-8 origin-left pointer-events-none"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -57,28 +57,28 @@ export default function Process() {
                     delay: index * 0.14,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="relative flex flex-col p-8 rounded-2xl bg-[#F3E9DC]/60 border border-[#D4AF77]/30 hover:border-[#D4AF77] transition-all duration-300 group shadow-sm hover:shadow-lg"
+                  className="relative flex flex-col p-8 rounded-2xl bg-white border border-[#D9DEE8] hover:border-[#163BC7]/50 transition-all duration-300 group shadow-sm hover:shadow-lg"
                 >
                   {/* Step Number Badge */}
                   <div className="flex items-center justify-between mb-6">
-                    <span className="font-serif text-3xl sm:text-4xl font-light text-[#4A0715] group-hover:text-[#C8102E] transition-colors">
+                    <span className="font-serif text-3xl sm:text-4xl font-light text-[#163BC7] group-hover:text-[#0787F9] transition-colors">
                       {step.step}
                     </span>
                     <motion.div
                       whileHover={{ scale: 1.08 }}
-                      className="h-10 w-10 rounded-xl bg-white border border-[#D4AF77]/40 flex items-center justify-center text-gray-700 group-hover:bg-[#4A0715] group-hover:text-[#D4AF77] group-hover:border-[#D4AF77] transition-all shadow-sm"
+                      className="h-10 w-10 rounded-xl bg-[#F7F9FC] border border-[#D9DEE8] flex items-center justify-center text-[#555B68] group-hover:bg-[#163BC7] group-hover:text-white group-hover:border-[#163BC7] transition-all shadow-sm"
                     >
                       <IconComp className="w-5 h-5" />
                     </motion.div>
                   </div>
 
-                  <h3 className="font-serif text-xl sm:text-2xl text-gray-900 font-normal mb-1">
+                  <h3 className="font-serif text-xl sm:text-2xl text-[#111111] font-normal mb-1">
                     {step.title}
                   </h3>
-                  <div className="text-[11px] font-semibold uppercase tracking-wider text-[#C8102E] mb-3">
+                  <div className="text-[11px] font-semibold uppercase tracking-wider text-[#163BC7] mb-3">
                     {step.subtitle}
                   </div>
-                  <p className="text-gray-600 text-sm leading-relaxed font-light">
+                  <p className="text-[#555B68] text-sm leading-relaxed font-light">
                     {step.description}
                   </p>
                 </motion.div>
@@ -90,10 +90,10 @@ export default function Process() {
           <div className="mt-12 text-center">
             <Link
               to="/process"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#4A0715] hover:bg-[#C8102E] text-white font-medium text-xs sm:text-sm tracking-[0.15em] uppercase transition-all duration-300 shadow-md hover:shadow-xl cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#163BC7] hover:bg-[#0B1638] text-white font-medium text-xs sm:text-sm tracking-[0.15em] uppercase transition-all duration-300 shadow-md hover:shadow-xl cursor-pointer"
             >
               <span>Explore Full 4-Step Journey &amp; Standards</span>
-              <ArrowRight className="w-4 h-4 text-[#D4AF77]" />
+              <ArrowRight className="w-4 h-4 text-white" />
             </Link>
           </div>
         </div>

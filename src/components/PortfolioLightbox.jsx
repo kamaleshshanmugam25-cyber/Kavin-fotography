@@ -62,11 +62,11 @@ export default function PortfolioLightbox({ item, items, onClose, onPrev, onNext
         {/* Top Control Bar */}
         <div className="absolute top-0 left-0 right-0 p-4 sm:p-6 flex items-center justify-between z-20 bg-gradient-to-b from-black/80 to-transparent">
           <div className="flex items-center gap-3">
-            <span className="text-xs uppercase tracking-[0.2em] text-[#D4AF77] font-semibold">
+            <span className="text-xs uppercase tracking-[0.2em] text-[#0787F9] font-semibold">
               KANVI PORTFOLIO
             </span>
-            <span className="text-gray-500">•</span>
-            <span className="text-xs text-gray-300 font-mono">
+            <span className="text-slate-500">•</span>
+            <span className="text-xs text-slate-300 font-mono">
               {currentIndex + 1} / {totalItems}
             </span>
           </div>
@@ -74,7 +74,7 @@ export default function PortfolioLightbox({ item, items, onClose, onPrev, onNext
           <button
             type="button"
             onClick={onClose}
-            className="p-2.5 rounded-full bg-white/10 hover:bg-[#D4AF77] text-white hover:text-[#2A040C] transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4AF77] cursor-pointer"
+            className="p-2.5 rounded-full bg-white/10 hover:bg-[#163BC7] text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#163BC7] cursor-pointer"
             aria-label="Close Lightbox"
           >
             <X className="w-5 h-5" />
@@ -85,7 +85,7 @@ export default function PortfolioLightbox({ item, items, onClose, onPrev, onNext
         <button
           type="button"
           onClick={onPrev}
-          className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 p-3 sm:p-4 rounded-full bg-black/50 hover:bg-[#D4AF77] text-white hover:text-[#2A040C] border border-white/10 transition-all duration-200 z-20 focus:outline-none focus:ring-2 focus:ring-[#D4AF77] cursor-pointer"
+          className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 p-3 sm:p-4 rounded-full bg-black/60 hover:bg-[#163BC7] text-white border border-white/10 transition-all duration-200 z-20 focus:outline-none focus:ring-2 focus:ring-[#163BC7] cursor-pointer"
           aria-label="Previous Image"
         >
           <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -95,7 +95,7 @@ export default function PortfolioLightbox({ item, items, onClose, onPrev, onNext
         <button
           type="button"
           onClick={onNext}
-          className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 p-3 sm:p-4 rounded-full bg-black/50 hover:bg-[#D4AF77] text-white hover:text-[#2A040C] border border-white/10 transition-all duration-200 z-20 focus:outline-none focus:ring-2 focus:ring-[#D4AF77] cursor-pointer"
+          className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 p-3 sm:p-4 rounded-full bg-black/60 hover:bg-[#163BC7] text-white border border-white/10 transition-all duration-200 z-20 focus:outline-none focus:ring-2 focus:ring-[#163BC7] cursor-pointer"
           aria-label="Next Image"
         >
           <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -124,23 +124,23 @@ export default function PortfolioLightbox({ item, items, onClose, onPrev, onNext
               <h3 className="font-serif text-xl sm:text-2xl text-white font-normal">
                 {item.title}
               </h3>
-              <span className="px-2.5 py-0.5 rounded-full bg-[#C8102E]/25 border border-[#D4AF77]/30 text-[#D4AF77] text-xs font-medium">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#163BC7]/30 border border-[#0787F9]/40 text-[#0787F9] text-xs font-medium">
                 {item.category}
               </span>
               {item.location && (
-                <span className="text-xs text-gray-400 flex items-center gap-1">
-                  <MapPin className="w-3.5 h-3.5 text-[#D4AF77]" />
+                <span className="text-xs text-slate-300 flex items-center gap-1">
+                  <MapPin className="w-3.5 h-3.5 text-[#0787F9]" />
                   <span>{item.location}</span>
                 </span>
               )}
             </div>
             {item.caption && (
-              <p className="text-sm text-gray-300 font-light mt-1 max-w-xl mx-auto">
+              <p className="text-sm text-slate-300 font-light mt-1 max-w-xl mx-auto">
                 {item.caption}
               </p>
             )}
             {item.isSample && (
-              <p className="text-[11px] text-gray-500 mt-2 italic">
+              <p className="text-[11px] text-slate-400 mt-2 italic">
                 * Sample inspiration reference showcasing color grading and framing philosophy.
               </p>
             )}
